@@ -1,0 +1,13 @@
+- ¿Nos podrían informar a que se dedican y como opera la empresa actualmente?
+- ¿Tienen un sistema informatizado en la actualidad?
+- ¿Cuáles son las pretensiones del sistema a desarrollar?
+- ¿Pretenden que el sistema tenga administradores?
+- ¿Pretenden que un usuario no registrado pueda ver las subastas?
+- ¿Cuales son los requisitos para registrarse en el sistema?
+- ¿Quienes tienen permisos suficientes para subastar?
+- ¿Pretenden que el sistema permita facturar?
+- ¿Con que PC y conexión a Internet cuentan?
+- ¿Quieren que el sistema les permita incorporar nuevas subastas?
+- ¿Quieren que haya un limite de subastas simultaneas?
+- ¿Quieren que el sistema les permita modificar al postor su oferta?
+- ¿Cuales son las consideraciones para tener en cuenta para una subasta?
