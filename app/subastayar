@@ -1,0 +1,13 @@
+#= AUTHOR: farfanoide (https://github.com/farfanoide)
+
+new_session -n 'Editor'
+
+send_line 'Editor' ${EDITOR:-vim}
+
+new_window -n 'Console'
+send_line 'Console' 'homestead status'
+send_keys 'Console' 'homestead up'
+
+
+# -*- mode: sh -*-
+# vi: set ft=sh :
