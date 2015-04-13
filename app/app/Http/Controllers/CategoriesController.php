@@ -38,7 +38,7 @@ class CategoriesController extends Controller {
   public function store(Request $request)
   {
     Category::create(['name' => $request->input('name')]);
-    return redirect('category/create');
+    return redirect('category');
   }
 
   /**
