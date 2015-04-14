@@ -6231,3 +6231,12 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+
+.item {
+  clear: both;
+  padding: 1em;
+}
+form.destroy-link {
+  display: inline;
+  float: right;
+}

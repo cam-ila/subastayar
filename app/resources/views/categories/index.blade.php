@@ -7,11 +7,19 @@
         <div class="panel-heading">Categorias</div>
         <div class="panel-body">
           @foreach ($categories as $category)
-          <p>{{ $category->name }}</p>
+          <div class="item">
+            {!! link_to(route('category.show', $category), $category->name) !!}
+            {!! Form::open(['url' => route('category.destroy', $category), 'class' => 'destroy-link']) !!}
+            {!! Form::input('hidden', '_method', 'DELETE') !!}
+            {!! Form::submit('Borrar', ['class' => 'btn btn-danger', ]) !!}
+            {!! Form::close() !!}
+          </div>
           @endforeach
         </div>
       </div>
+      {!! link_to(route('category.create'), 'Crear Categoria', ['class' => 'btn btn-success']) !!}
     </div>
   </div>
 </div>
+
 @endsection
