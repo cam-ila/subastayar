@@ -27,7 +27,8 @@ class CategoriesController extends Controller {
    */
   public function create()
   {
-    return view('categories.create');
+    $category = new Category();
+    return view('categories.create', compact('category'));
   }
 
   /**
@@ -61,7 +62,8 @@ class CategoriesController extends Controller {
    */
   public function edit($id)
   {
-    //
+    $category = Category::find($id);
+    return view('categories.edit', compact('category'));
   }
 
   /**
@@ -70,9 +72,11 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update($id, Request $request)
   {
-    //
+    $category = Category::find($id);
+    $category->update(['name' => $request->input('name')]);
+    return redirect(route('category.show', $category));
   }
 
   /**
