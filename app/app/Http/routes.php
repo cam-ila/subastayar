@@ -15,8 +15,8 @@ Route::get('/', 'CategoriesController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::model('category', 'App\Category');
-Route::resource('category', 'CategoriesController');
+Route::model('categories', 'App\Category');
+Route::resource('categories', 'CategoriesController');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',

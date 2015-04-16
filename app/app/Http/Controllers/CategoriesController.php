@@ -73,7 +73,7 @@ class CategoriesController extends Controller {
   public function update(Category $category, Request $request)
   {
     $category->update(['name' => $request->input('name')]);
-    return redirect(route('category.show', $category));
+    return redirect(route('categories.show', $category));
   }
 
   /**
@@ -86,7 +86,7 @@ class CategoriesController extends Controller {
   {
     // buscamos la categoria y la hacemos chucha
     Category::destroy($category->id);
-    return redirect('category');
+    return redirect('categories');
   }
 
 }
