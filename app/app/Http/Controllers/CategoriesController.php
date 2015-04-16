@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateCategoryRequest;
 use App\Category as Category;
 
 
@@ -36,10 +36,10 @@ class CategoriesController extends Controller {
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(CreateCategoryRequest $request)
   {
     Category::create(['name' => $request->input('name')]);
-    return redirect('category');
+    return redirect('categories');
   }
 
   /**
