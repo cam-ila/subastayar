@@ -85,7 +85,7 @@ class CategoriesController extends Controller {
   public function destroy(Category $category)
   {
     // buscamos la categoria y la hacemos chucha
-    Category::destroy($category->id);
+    $category->delete();
     return redirect('categories');
   }
 
