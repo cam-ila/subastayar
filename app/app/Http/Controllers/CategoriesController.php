@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\Category as Category;
 
 
 class CategoriesController extends Controller {
@@ -27,7 +27,7 @@ class CategoriesController extends Controller {
    */
   public function create()
   {
-    $category = new Category();
+    $category = new Category;
     return view('categories.create', compact('category'));
   }
 
@@ -48,9 +48,8 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function show($id)
+  public function show(Category $category)
   {
-    $category = Category::find($id);
     return view('categories.show', compact('category'));
   }
 
@@ -60,9 +59,8 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function edit($id)
+  public function edit(Category $category)
   {
-    $category = Category::find($id);
     return view('categories.edit', compact('category'));
   }
 
@@ -72,9 +70,8 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id, Request $request)
+  public function update(Category $category, Request $request)
   {
-    $category = Category::find($id);
     $category->update(['name' => $request->input('name')]);
     return redirect(route('category.show', $category));
   }
@@ -85,10 +82,10 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Category $category)
   {
     // buscamos la categoria y la hacemos chucha
-    Category::destroy($id);
+    Category::destroy($category->id);
     return redirect('category');
   }
 
