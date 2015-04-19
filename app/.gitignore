@@ -3,6 +3,7 @@
 .env.*.php
 .env.php
 .env
+tags
 
 ### Composer ###
 composer.phar
