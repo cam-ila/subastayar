@@ -8,3 +8,4 @@ tags
 ### Composer ###
 composer.phar
 vendor/
+extra/*
