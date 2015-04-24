@@ -14,11 +14,11 @@ class OfferTableSeeder extends Seeder {
 
     App\Bid::whereTitle('Guantes de acero')->firstOrFail()->offers()->saveMany([
       new App\offer([
-        'body' => 'Soy carnicero y lamentablemente perdí un dedo trabajando. Me gustaría comprar el producto para que no me vuelva a ocurrir.',
+        'body'    => 'Soy carnicero y lamentablemente perdí un dedo trabajando. Me gustaría comprar el producto para que no me vuelva a ocurrir.',
         'user_id' => $ramiro->id
       ]),
       new App\offer([
-        'body' => 'Soy carpintero y la necesito para cuando manejo la sierra.',
+        'body'    => 'Soy carpintero y la necesito para cuando manejo la sierra.',
         'user_id' => App\User::whereName('Roberto Vegas')->firstOrFail()->id
       ])
     ]);
