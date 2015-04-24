@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'CategoriesController@index');
+Route::get('/', ['uses' => 'CategoriesController@index', 'as' => 'home']);
 
 Route::get('home', 'HomeController@index');
 
@@ -19,6 +19,6 @@ Route::model('categories', 'App\Category');
 Route::resource('categories', 'CategoriesController');
 
 Route::controllers([
-  'auth' => 'Auth\AuthController',
+  'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
 ]);
