@@ -15,13 +15,13 @@ class CreateSalesTable extends Migration {
     Schema::create('sales', function(Blueprint $table)
     {
       $table->increments('id');
-      $table->integer('offer_id')->unsigned();
-      $table->integer('product_id')->unsigned();
+      $table->integer('offer_id')->unsigned()->index();
+      $table->integer('bid_id')->unsigned()->index();
       $table->timestamps();
 
       // Constraints
       $table->foreign('offer_id')->references('id')->on('offers');
-      $table->foreign('product_id')->references('id')->on('products');
+      $table->foreign('bid_id')->references('id')->on('bids');
     });
   }
 

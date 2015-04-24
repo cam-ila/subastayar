@@ -18,13 +18,13 @@ class CreateOffersTable extends Migration {
       $table->increments('id');
       $table->text('body');
       $table->integer('prize');
-      $table->integer('user_id')->unsigned();
-      $table->integer('product_id')->unsigned();
+      $table->integer('user_id')->unsigned()->index();
+      $table->integer('bid_id')->unsigned()->index();
       $table->timestamps();
 
       // Constraints
       $table->foreign('user_id')->references('id')->on('users');
-      $table->foreign('product_id')->references('id')->on('products');
+      $table->foreign('bid_id')->references('id')->on('bids');
     });
   }
 

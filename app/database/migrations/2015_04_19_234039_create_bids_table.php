@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration {
+class CreateBidsTable extends Migration {
 
   /**
    * Run the migrations.
@@ -12,16 +12,19 @@ class CreateProductsTable extends Migration {
    */
   public function up()
   {
-    Schema::create('products', function(Blueprint $table)
+    Schema::create('bids', function(Blueprint $table)
     {
       // Columns
       $table->increments('id');
-      $table->string('name');
+      $table->string('title');
       $table->string('description');
-      $table->integer('user_id')->unsigned();
+      $table->integer('user_id')->unsigned()->index();
+      $table->integer('category_id')->unsigned()->index();
+      $table->timestamps();
 
       // Constraints
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+      $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
     });
   }
 
@@ -32,7 +35,7 @@ class CreateProductsTable extends Migration {
    */
   public function down()
   {
-    Schema::drop('products');
+    Schema::drop('bids');
   }
 
 }
