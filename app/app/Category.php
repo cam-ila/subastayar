@@ -7,4 +7,10 @@ class Category extends Model {
   protected $table = 'categories';
   protected $fillable = ['name'];
 
+
+  public function bids()
+  {
+    return $this->hasMany('App\Bid');
+  }
+
 }
