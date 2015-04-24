@@ -16,4 +16,9 @@ class Bid extends Model {
   {
     return $this->belongsTo('App\Category');
   }
+
+  public function offers()
+  {
+    return $this->hasMany('App\Offer');
+  }
 }

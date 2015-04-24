@@ -17,7 +17,7 @@ class CreateOffersTable extends Migration {
       // Columns
       $table->increments('id');
       $table->text('body');
-      $table->integer('prize');
+      $table->integer('prize')->default(0);
       $table->integer('user_id')->unsigned()->index();
       $table->integer('bid_id')->unsigned()->index();
       $table->timestamps();
