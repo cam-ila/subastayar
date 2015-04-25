@@ -13,10 +13,9 @@ class BidTableSeeder extends Seeder {
     $otros     = App\Category::whereName('Otros')->firstOrFail();
     $alimentos = App\Category::whereName('Alimentos')->firstOrFail();
 
-
     App\User::whereEmail('carlosmaidana@carlos.com')->firstOrFail()->bids()->saveMany([
       new App\Bid([
-        'title'       => 'Llama',
+        'title'       => 'Guantes de acero',
         'description' => 'Guante de malla de acero inox. tejido, anticorte, marca *manulatex* de industria francesa',
         'category_id' => $ropa->id,
       ]),
@@ -42,7 +41,7 @@ class BidTableSeeder extends Seeder {
 
     App\User::whereEmail('sergioramirez@sergioramirez.com')->firstOrFail()->bids()->saveMany([
       new App\Bid([
-        'title' => 'Aceite y Vinagre',
+        'title'       => 'Aceite y Vinagre',
         'description' => '200ml de aceite y 300ml de vinagre. No incluye fascos',
         'category_id' => $alimentos->id,
       ])

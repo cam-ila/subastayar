@@ -22,6 +22,27 @@ class OfferTableSeeder extends Seeder {
         'user_id' => App\User::whereName('Roberto Vegas')->firstOrFail()->id
       ])
     ]);
+
+    App\Bid::whereTitle('Llama')->firstOrFail()->offers()->save(
+      new App\offer([
+        'body'    => 'Siempre me gustaron los animales porque vivo solo y son buena compañia. Una llama es justo lo que necesito.',
+        'user_id' => App\User::whereName('Mariano Petrucci')->firstOrFail()->id
+      ])
+    );
+
+    App\Bid::whereTitle('Kriptonita')->firstOrFail()->offers()->save(
+      new App\offer([
+        'body'    => 'Odio a superman y si algún día lo llego a cruzar este producto me vendría al pelo.',
+        'user_id' => App\User::whereName('Mabel Rimano')->firstOrFail()->id
+      ])
+    );
+
+    App\Bid::whereTitle('Espejo')->firstOrFail()->offers()->save(
+      new App\offer([
+        'body'    => 'Siempre quise ser vampiro. Con este espejo no me convertiría en vampiro pero me ayudaría a sentirme uno.',
+        'user_id' => $ramiro->id
+      ])
+    );
   }
 
 }
