@@ -20,6 +20,7 @@ class CreateBidsTable extends Migration {
       $table->string('description');
       $table->integer('user_id')->unsigned()->index();
       $table->integer('category_id')->unsigned()->index();
+      $table->timestamp('expires_at');
       $table->timestamps();
 
       // Constraints
