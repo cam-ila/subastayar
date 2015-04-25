@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,16 +9,16 @@ class Bid extends Model {
 
   public function user()
   {
-    return $this->belongsTo('App\User');
+    return $this->belongsTo('App\Models\User');
   }
 
   public function category()
   {
-    return $this->belongsTo('App\Category');
+    return $this->belongsTo('App\Models\Category');
   }
 
   public function offers()
   {
-    return $this->hasMany('App\Offer');
+    return $this->hasMany('App\Models\Offer');
   }
 }

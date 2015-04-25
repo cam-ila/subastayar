@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +33,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
   public function bids()
   {
-    return $this->hasMany('App\Bid');
+    return $this->hasMany('App\Models\Bid');
+  }
+
+  public function offers()
+  {
+    return $this->hasMany('App\Models\Offer');
   }
 }

@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class Category extends Model {
 
   public function bids()
   {
-    return $this->hasMany('App\Bid');
+    return $this->hasMany('App\Models\Bid');
   }
 
 }

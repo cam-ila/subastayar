@@ -15,7 +15,7 @@ Route::get('/', ['uses' => 'CategoriesController@index', 'as' => 'home']);
 
 Route::get('home', 'HomeController@index');
 
-Route::model('categories', 'App\Category');
+Route::model('categories', 'App\Models\Category');
 Route::resource('categories', 'CategoriesController');
 
 Route::controllers([

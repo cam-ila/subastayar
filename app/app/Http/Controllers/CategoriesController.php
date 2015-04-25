@@ -4,8 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CreateCategoryRequest;
-use App\Category as Category;
-
+use App\Models\Category as Category;
 
 class CategoriesController extends Controller {
 

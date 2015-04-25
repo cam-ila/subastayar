@@ -3,13 +3,15 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category as Category;
+
 class CategoryTableSeeder extends Seeder {
   public function run()
   {
-    App\Category::create(['name' => 'Ropa y Accesorios']);
-    App\Category::create(['name' => 'Animales']);
-    App\Category::create(['name' => 'Antigüedades']);
-    App\Category::create(['name' => 'Otros']);
-    App\Category::create(['name' => 'Alimentos']);
+    Category::create(['name' => 'Ropa y Accesorios']);
+    Category::create(['name' => 'Animales']);
+    Category::create(['name' => 'Antigüedades']);
+    Category::create(['name' => 'Otros']);
+    Category::create(['name' => 'Alimentos']);
   }
 }
