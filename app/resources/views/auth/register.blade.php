@@ -9,7 +9,7 @@
         <div class="panel-body">
           @if (count($errors) > 0)
           <div class="alert alert-danger">
-            {{ trans('forms.generic_trouble') }}
+            {!! trans('forms.generic_trouble') !!}
             <ul>
               @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
