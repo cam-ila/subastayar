@@ -69,7 +69,7 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update(Category $category, Request $request)
+  public function update(Category $category, CreateCategoryRequest $request)
   {
     $category->update(['name' => $request->input('name')]);
     return redirect(route('categories.show', $category));
