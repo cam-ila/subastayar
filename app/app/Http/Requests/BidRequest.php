@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateCategoryRequest extends Request {
+class BidRequest extends Request {
 
   /**
    * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class CreateCategoryRequest extends Request {
   public function rules()
   {
     return [
-      'name' => 'required|unique:categories,name'
+      'title'   => 'required',
+      'user_id' => 'required'
     ];
   }
 

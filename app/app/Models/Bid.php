@@ -7,6 +7,10 @@ class Bid extends Model {
   protected $table = 'bids';
   protected $fillable = ['name', 'description', 'user_id'];
 
+  public function __toString()
+  {
+    return $this->title;
+  }
   public function user()
   {
     return $this->belongsTo('App\Models\User');

@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\CategoryRequest;
-use App\Models\Category as Category;
+use App\Models\Bid as Bid;
+use App\Http\BidRequest;
 
-class CategoriesController extends Controller {
+class BidsController extends Controller {
 
   /**
    * Display a listing of the resource.
@@ -14,8 +14,8 @@ class CategoriesController extends Controller {
    */
   public function index()
   {
-    $resources = Category::all();
-    $model = 'category';
+    $resources = Bid::all();
+    $model = 'bid';
     return view('shared.index', compact('resources', 'model'));
   }
 
@@ -26,8 +26,8 @@ class CategoriesController extends Controller {
    */
   public function create()
   {
-    $category = new Category;
-    return view('categories.create', compact('category'));
+    $bid = new Bid;
+    return view('bids.create', compact('bid'));
   }
 
   /**
@@ -35,10 +35,10 @@ class CategoriesController extends Controller {
    *
    * @return Response
    */
-  public function store(CategoryRequest $request)
+  public function store(BidRequest $request)
   {
-    Category::create(['name' => $request->input('name')]);
-    return redirect('categories');
+    Bid::create(['name' => $request->input('name')]);
+    return redirect('bids');
   }
 
   /**
@@ -47,9 +47,9 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function show(Category $category)
+  public function show(Bid $bid)
   {
-    return view('categories.show', compact('category'));
+    return view('bids.show', compact('bid'));
   }
 
   /**
@@ -58,9 +58,9 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function edit(Category $category)
+  public function edit(Bid $bid)
   {
-    return view('categories.edit', compact('category'));
+    return view('bids.edit', compact('bid'));
   }
 
   /**
@@ -69,10 +69,10 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update(Category $category, CategoryRequest $request)
+  public function update(Bid $bid, BidRequest $request)
   {
-    $category->update(['name' => $request->input('name')]);
-    return redirect(route('categories.show', $category));
+    $bid->update(['name' => $request->input('name')]);
+    return redirect(route('bids.show', $bid));
   }
 
   /**
@@ -81,11 +81,11 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function destroy(Category $category)
+  public function destroy(Bid $bid)
   {
     // buscamos la categoria y la hacemos chucha
-    $category->delete();
-    return redirect('categories');
+    $bid->delete();
+    return redirect('bids');
   }
 
 }

@@ -18,6 +18,9 @@ Route::get('home', 'HomeController@index');
 Route::model('categories', 'App\Models\Category');
 Route::resource('categories', 'CategoriesController');
 
+Route::model('bids', 'App\Models\Bid');
+Route::resource('bids', 'BidsController');
+
 Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
