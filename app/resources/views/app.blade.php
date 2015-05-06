@@ -19,7 +19,7 @@
       <![endif]-->
   </head>
   <body>
-    @include('partials.nav')
+    @include('shared.partials.nav')
 
     <div class="container-fluid">
       @yield('content')
