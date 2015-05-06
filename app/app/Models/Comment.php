@@ -1,10 +1,11 @@
 <?php namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Base;
 
-class Comment extends Model {
+class Comment extends Base {
 
-  protected $table = 'comments';
-  protected $fillable = ['body', 'response', 'user_id', 'bid_id'];
+  protected $main_attr = 'body';
+  protected $table     = 'comments';
+  protected $fillable  = ['body', 'response', 'user_id', 'bid_id'];
 
 }

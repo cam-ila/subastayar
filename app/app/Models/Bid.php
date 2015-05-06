@@ -1,16 +1,14 @@
 <?php namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Base;
 
-class Bid extends Model {
+class Bid extends Base {
 
-  protected $table = 'bids';
-  protected $fillable = ['name', 'description', 'user_id'];
+  protected $main_attr = 'title';
+  protected $table     = 'bids';
+  protected $fillable  = ['name', 'description', 'user_id'];
 
-  public function __toString()
-  {
-    return $this->title;
-  }
+
   public function user()
   {
     return $this->belongsTo('App\Models\User');

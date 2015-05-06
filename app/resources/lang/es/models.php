@@ -10,6 +10,10 @@ return [
   'comment'  => 'comentario|comentarios',
   'sale'     => 'venta|ventas',
 
+  'sales' => [
+    'sold_by' => ':product vendido por :seller.',
+  ],
+
 ];
 
 

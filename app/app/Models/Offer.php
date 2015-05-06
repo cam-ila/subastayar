@@ -1,9 +1,10 @@
 <?php namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Base;
 
-class Offer extends Model {
+class Offer extends Base {
 
+  protected $main_attr = 'body';
   protected $table = 'offers';
   protected $fillable = ['body', 'prize', 'user_id'];
 
@@ -11,4 +12,5 @@ class Offer extends Model {
   {
     return $this->belongsTo('App\Models\User');
   }
+
 }

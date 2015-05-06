@@ -1,12 +1,13 @@
 <?php namespace App\Models;
 
+use App\Models\Base;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
   use Authenticatable, CanResetPassword;
 
@@ -39,5 +40,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   public function offers()
   {
     return $this->hasMany('App\Models\Offer');
+  }
+
+  public function mainAttribute()
+  {
+    return $this->name;
   }
 }

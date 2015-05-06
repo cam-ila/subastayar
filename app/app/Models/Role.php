@@ -1,10 +1,11 @@
 <?php namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Base;
 
-class Role extends Model {
+class Role extends Base {
 
-  protected $table    = 'roles';
-  protected $fillable = ['name', 'description'];
+  protected $main_attr = 'name';
+  protected $table     = 'roles';
+  protected $fillable  = ['name', 'description'];
 
 }
