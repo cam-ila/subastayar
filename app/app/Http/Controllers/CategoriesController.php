@@ -58,9 +58,9 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function edit(Category $category)
+  public function edit(Category $resource)
   {
-    return view('categories.edit', compact('category'));
+    return view('shared.edit', compact('resource'));
   }
 
   /**

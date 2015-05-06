@@ -21,6 +21,9 @@ Route::resource('categories', 'CategoriesController');
 Route::model('bids', 'App\Models\Bid');
 Route::resource('bids', 'BidsController');
 
+Route::model('offers', 'App\Models\Offer');
+Route::resource('offers', 'OffersController');
+
 Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',

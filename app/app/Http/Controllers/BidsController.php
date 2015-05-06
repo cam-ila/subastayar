@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Bid as Bid;
-use App\Http\BidRequest;
+use App\Http\Requests\BidRequest;
 
 class BidsController extends Controller {
 
@@ -58,9 +57,9 @@ class BidsController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function edit(Bid $bid)
+  public function edit(Bid $resource)
   {
-    return view('bids.edit', compact('bid'));
+    return view('shared.edit', compact('resource'));
   }
 
   /**
