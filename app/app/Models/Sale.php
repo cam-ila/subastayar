@@ -9,12 +9,12 @@ class Sale extends Model {
 
   public function offer()
   {
-    return $this->hasOne('App\Models\Offer');
+    return $this->hasOne('App\Models\Offer')->firstOrFail();
   }
 
   public function bid()
   {
-    return $this->hasOne('App\Models\Bid');
+    return $this->hasOne('App\Models\Bid')->firstOrFail();
   }
 
   public function buyer()
@@ -22,16 +22,16 @@ class Sale extends Model {
     return $this->offer()->user();
   }
 
-
   public function seller()
   {
     return $this->bid()->user();
   }
 
-  public function asString()
+  protected function asString()
   {
-    $seller = $this->seller();
+    $seller  = $this->seller();
     $product = $this->bid();
     return trans('models.sales.sold_by', compact('seller', 'product'));
   }
+
 }

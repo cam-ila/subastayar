@@ -17,8 +17,8 @@ class Base extends Model {
     return $this->asString();
   }
 
-  public function asString()
+  protected function asString()
   {
-    $this->getAttribute($this->main_attr);
+    return $this->getAttribute($this->main_attr);
   }
 }

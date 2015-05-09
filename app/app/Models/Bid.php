@@ -11,16 +11,17 @@ class Bid extends Base {
 
   public function user()
   {
-    return $this->belongsTo('App\Models\User');
+    return $this->belongsTo('App\Models\User')->firstOrFail();
   }
 
   public function category()
   {
-    return $this->belongsTo('App\Models\Category');
+    return $this->belongsTo('App\Models\Category')->firstOrFail();
   }
 
   public function offers()
   {
     return $this->hasMany('App\Models\Offer');
   }
+
 }

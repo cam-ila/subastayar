@@ -8,4 +8,14 @@ class Comment extends Base {
   protected $table     = 'comments';
   protected $fillable  = ['body', 'response', 'user_id', 'bid_id'];
 
+  public function user()
+  {
+    return $this->belongsTo('App\Models\User')->firstOrFail();
+  }
+
+  public function bid()
+  {
+    return $this->belongsTo('App\Models\Bid')->firstOrFail();
+  }
+
 }

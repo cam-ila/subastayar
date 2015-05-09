@@ -14,9 +14,4 @@ class Category extends Base {
     return $this->hasMany('App\Models\Bid');
   }
 
-  public function model()
-  {
-    return 'category';
-  }
-
 }

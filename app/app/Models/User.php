@@ -11,6 +11,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
   use Authenticatable, CanResetPassword;
 
+  protected $main_attr = 'name';
   /**
    * The database table used by the model.
    *
@@ -42,8 +43,4 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     return $this->hasMany('App\Models\Offer');
   }
 
-  public function mainAttribute()
-  {
-    return $this->name;
-  }
 }

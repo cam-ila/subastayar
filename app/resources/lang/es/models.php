@@ -13,6 +13,9 @@ return [
   'sales' => [
     'sold_by' => ':product vendido por :seller.',
   ],
+  'offers' => [
+    'offered_by' => ':buyer oferto por :product',
+  ],
 
 ];
 
