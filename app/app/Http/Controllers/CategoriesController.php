@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category as Category;
+use Illuminate\Http\Request;
 
 class CategoriesController extends Controller {
 
@@ -12,11 +12,14 @@ class CategoriesController extends Controller {
    *
    * @return Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $resources = Category::all();
-    $model = 'category';
-    return view('shared.index', compact('resources', 'model'));
+    // TODO: abstract this to a single location, getting the class dynamically 
+    // from $request->input('model')
+    $query     = $request->input('query');
+    $resources = Category::search($query)->get(['*']);
+    $model     = 'category';
+    return view('shared.index', compact('resources', 'model', 'query'));
   }
 
   /**
@@ -26,8 +29,8 @@ class CategoriesController extends Controller {
    */
   public function create()
   {
-    $category = new Category;
-    return view('categories.create', compact('category'));
+    $resource = new resource;
+    return view('categories.create', compact('resource'));
   }
 
   /**

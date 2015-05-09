@@ -6,6 +6,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           {{ pluralize($model) }}
+          @include('shared.partials.search', compact('model', 'query'))
         </div>
         <div class="panel-body">
           @foreach ($resources as $resource)
@@ -25,7 +26,9 @@
         </div>
       </div>
       <div class="pull-right">
-        {!! link_to(route(str_plural($model) . '.create'), trans('crud.titles.create', ['model' => translate($model)]), ['class' => 'btn btn-success']) !!}
+        {!! link_to(route(str_plural($model) . '.create'),
+                    trans('crud.titles.create',
+                    ['model' => translate($model)]), ['class' => 'btn btn-success']) !!}
       </div>
     </div>
   </div>

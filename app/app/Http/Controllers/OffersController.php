@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Models\Offer as Offer;
 use App\Http\Requests\OfferRequest;
+use Illuminate\Http\Request;
 
 class OffersController extends Controller {
 
@@ -11,11 +12,13 @@ class OffersController extends Controller {
    *
    * @return Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $resources = Offer::all();
+
+    $query     = $request->input('query');
+    $resources = Offer::search($query)->get(['*']);
     $model = 'offer';
-    return view('shared.index', compact('resources', 'model'));
+    return view('shared.index', compact('resources', 'model', 'query'));
   }
 
   /**

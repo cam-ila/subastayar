@@ -5,8 +5,8 @@ use App\Models\Base;
 class Offer extends Base {
 
   protected $main_attr = 'body';
-  protected $table = 'offers';
-  protected $fillable = ['body', 'prize', 'user_id'];
+  protected $table     = 'offers';
+  protected $fillable  = ['body', 'prize', 'user_id'];
 
   public function user()
   {

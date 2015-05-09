@@ -21,4 +21,15 @@ class Base extends Model {
   {
     return $this->getAttribute($this->main_attr);
   }
+
+  public function scopeSearch($query, $search)
+  {
+    $q = $query;
+    if (!empty($search)) {
+      // TODO: move this to a repository
+      $q = $q->where($this->main_attr, 'LIKE', "%{$search}%");
+    }
+
+    return $q;
+  }
 }

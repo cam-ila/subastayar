@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Models\Bid as Bid;
 use App\Http\Requests\BidRequest;
+use Illuminate\Http\Request;
 
 class BidsController extends Controller {
 
@@ -11,11 +12,12 @@ class BidsController extends Controller {
    *
    * @return Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    $resources = Bid::all();
-    $model = 'bid';
-    return view('shared.index', compact('resources', 'model'));
+    $query     = $request->input('query');
+    $resources = Bid::search($query)->get(['*']);
+    $model     = 'bid';
+    return view('shared.index', compact('resources', 'model', 'query'));
   }
 
   /**
