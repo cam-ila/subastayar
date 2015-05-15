@@ -27,8 +27,8 @@ class BidsController extends Controller {
    */
   public function create()
   {
-    $bid = new Bid;
-    return view('bids.create', compact('bid'));
+    $resource = new Bid;
+    return view('shared.create', compact('resource'));
   }
 
   /**
@@ -48,9 +48,9 @@ class BidsController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function show(Bid $bid)
+  public function show(Bid $resource)
   {
-    return view('bids.show', compact('bid'));
+    return view('shared.show', compact('resource'));
   }
 
   /**

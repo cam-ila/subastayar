@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name') }}</title>
 
+    <!-- Stylesheets -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
     <!-- Fonts -->
@@ -22,11 +23,17 @@
     @include('shared.partials.nav')
 
     <div class="container-fluid">
+      @include('shared.partials.flashes')
+
       @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>if (!window.jQuery) { document.write('<script src="{{asset('/js/jquery.2.1.3.min.js') }}"><\/script>'); } </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('/js/bootstrap.3.3.1.min.js') }}"></script>
+    <!-- <script>if (!window.jQuery) { document.write('<script src="{{asset('/js/jquery.2.1.3.min.js') }}"><\/script>'); } </script> -->
+    <script src="{{ asset('/js/app.js')}}"></script>
   </body>
 </html>

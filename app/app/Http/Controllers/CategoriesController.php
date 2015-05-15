@@ -15,11 +15,10 @@ class CategoriesController extends Controller {
   public function index(Request $request)
   {
     // TODO: abstract this to a single location, getting the class dynamically 
-    // from $request->input('model')
-    $query     = $request->input('query');
-    $resources = Category::search($query)->get(['*']);
-    $model     = 'category';
-    return view('shared.index', compact('resources', 'model', 'query'));
+    $query        = $request->input('query');
+    $model        = ($request->input('model')) ? $request->input('model') : 'category';
+    $resources    = call_user_func('App\Models\\'.ucfirst($model).'::search', $query)->get(['*']);
+    return view('shared.index')->with(compact('resources', 'model', 'query'));
   }
 
   /**
@@ -29,8 +28,8 @@ class CategoriesController extends Controller {
    */
   public function create()
   {
-    $resource = new resource;
-    return view('categories.create', compact('resource'));
+    $resource = new Category;
+    return view('shared.create', compact('resource'));
   }
 
   /**
@@ -50,9 +49,9 @@ class CategoriesController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function show(Category $category)
+  public function show(Category $resource)
   {
-    return view('categories.show', compact('category'));
+    return view('shared.show', compact('resource'));
   }
 
   /**
@@ -86,9 +85,8 @@ class CategoriesController extends Controller {
    */
   public function destroy(Category $category)
   {
-    // buscamos la categoria y la hacemos chucha
     $category->delete();
-    return redirect('categories');
+    return redirect('categories')->with('message', 'Hubo un error al intentar borrar la categoria.');
   }
 
 }
