@@ -22,8 +22,7 @@ class BidRequest extends Request {
   public function rules()
   {
     return [
-      'title'   => 'required',
-      'user_id' => 'required'
+      'title'   => 'required'
     ];
   }
 

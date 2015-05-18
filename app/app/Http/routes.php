@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['uses' => 'CategoriesController@index', 'as' => 'home']);
+Route::get('/', ['uses' => 'BidsController@index', 'as' => 'home']);
 
 Route::get('home', 'HomeController@index');
 

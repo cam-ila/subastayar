@@ -9,3 +9,4 @@ tags
 composer.phar
 vendor/
 extra/*
+.functions

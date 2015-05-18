@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bid as Bid;
 use App\Http\Requests\BidRequest;
+use App\Models\Bid as Bid;
 use Illuminate\Http\Request;
 
 class BidsController extends Controller {
@@ -38,7 +38,7 @@ class BidsController extends Controller {
    */
   public function store(BidRequest $request)
   {
-    Bid::create(['name' => $request->input('name')]);
+    Bid::create($request->all());
     return redirect('bids');
   }
 
@@ -84,7 +84,6 @@ class BidsController extends Controller {
    */
   public function destroy(Bid $bid)
   {
-    // buscamos la categoria y la hacemos chucha
     $bid->delete();
     return redirect('bids');
   }

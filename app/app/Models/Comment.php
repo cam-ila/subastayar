@@ -10,12 +10,12 @@ class Comment extends Base {
 
   public function user()
   {
-    return $this->belongsTo('App\Models\User')->firstOrFail();
+    return $this->belongsTo('App\Models\User');
   }
 
   public function bid()
   {
-    return $this->belongsTo('App\Models\Bid')->firstOrFail();
+    return $this->belongsTo('App\Models\Bid');
   }
 
 }

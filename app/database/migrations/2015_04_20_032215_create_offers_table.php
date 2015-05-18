@@ -23,8 +23,8 @@ class CreateOffersTable extends Migration {
       $table->timestamps();
 
       // Constraints
-      $table->foreign('user_id')->references('id')->on('users');
-      $table->foreign('bid_id')->references('id')->on('bids');
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+      $table->foreign('bid_id')->references('id')->on('bids')->onDelete('cascade');
     });
   }
 

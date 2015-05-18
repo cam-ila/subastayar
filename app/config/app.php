@@ -194,6 +194,8 @@ return [
     'View'      => 'Illuminate\Support\Facades\View',
     'Form'      => 'Illuminate\Html\FormFacade',
     'HTML'      => 'Illuminate\Html\HtmlFacade',
+    'Icon'      => 'Bootstrapper\Facades\Icon',
+    'Button'    => 'Bootstrapper\Facades\Button',
 
   ],
 

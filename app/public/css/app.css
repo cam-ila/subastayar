@@ -6238,3 +6238,11 @@ label,
 form.destroy-link {
   display: inline;
 }
+
+.panel-form {
+  margin-top: 1.5em;
+}
+.panel-header {
+  text-transform: capitalize;
+  color: #787878;
+}

@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Extensions\BladeExtensions;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -31,10 +32,13 @@ class AppServiceProvider extends ServiceProvider {
     );
 
     $this->app->register('Illuminate\Html\HtmlServiceProvider');
+    $this->app->register('Bootstrapper\BootstrapperL5ServiceProvider');
 
     if ($this->app->environment() == 'local') {
       $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
     }
+    BladeExtensions::register();
+
   }
 
 }

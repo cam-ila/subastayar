@@ -14,10 +14,9 @@ class CategoriesController extends Controller {
    */
   public function index(Request $request)
   {
-    // TODO: abstract this to a single location, getting the class dynamically 
     $query        = $request->input('query');
     $model        = ($request->input('model')) ? $request->input('model') : 'category';
-    $resources    = call_user_func('App\Models\\'.ucfirst($model).'::search', $query)->get(['*']);
+    $resources    = Category::search($query)->get();
     return view('shared.index')->with(compact('resources', 'model', 'query'));
   }
 
@@ -73,7 +72,7 @@ class CategoriesController extends Controller {
    */
   public function update(Category $category, CategoryRequest $request)
   {
-    $category->update(['name' => $request->input('name')]);
+    $category->update(['name' => $request->all()]);
     return redirect(route('categories.show', $category));
   }
 
@@ -86,7 +85,7 @@ class CategoriesController extends Controller {
   public function destroy(Category $category)
   {
     $category->delete();
-    return redirect('categories')->with('message', 'Hubo un error al intentar borrar la categoria.');
+    return redirect('categories');
   }
 
 }

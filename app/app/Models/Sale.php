@@ -9,12 +9,12 @@ class Sale extends Model {
 
   public function offer()
   {
-    return $this->hasOne('App\Models\Offer')->firstOrFail();
+    return $this->hasOne('App\Models\Offer');
   }
 
   public function bid()
   {
-    return $this->hasOne('App\Models\Bid')->firstOrFail();
+    return $this->hasOne('App\Models\Bid');
   }
 
   public function buyer()

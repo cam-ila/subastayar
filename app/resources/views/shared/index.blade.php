@@ -2,16 +2,13 @@
 @section('content')
 
 @section('panel_body')
-  @foreach ($resources as $resource)
-  <div class="row item">
-    <div class="col-md-4">
-      {!! link_to(route(str_plural($model) . '.show', $resource), $resource) !!}
-    </div>
-    <div class="col-md-8 text-right">
-      {!! destroy_link($resource) !!}
-    </div>
+  @if(!$resources->count() == 0)
+    @include(str_plural($resources->first()->model()).'.table')
+  @else
+  <div class="alert alert-warning">
+    <p>{{ trans('no_records') }}</p>
   </div>
-  @endforeach
+  @endif
 @endsection
 
 @section('panel_actions')

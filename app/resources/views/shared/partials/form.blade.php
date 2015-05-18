@@ -1,3 +1,4 @@
-{!! Form::open(['url' => route(str_plural($resource->model()).'.update', $resource), 'method' => $method]) !!}
-  @include(str_plural($resource->model()).'.fields', ['resource' => $resource])
+{{ $method }}
+{!! Form::open(['url' => $url, 'method' => $method]) !!}
+  @include(str_plural($resource->model()).'.fields')
 {!! Form::close() !!}
