@@ -17,9 +17,9 @@
   </thead>
 
   <tbody>
-  @foreach ($resources as $resource)
+  @foreach($resources as $resource)
     <tr>
-      @foreach ($resource->getVisible() as $attribute)
+      @foreach($resource->getVisible() as $attribute)
         @eval($attr = $resource->getAttribute($attribute))
         <td> {{ too_long($attr) ? substr($attr, 0, 25).' ... ' : $attr}} </td>
       @endforeach
