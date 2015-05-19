@@ -32,6 +32,12 @@ class OffersController extends Controller {
     return redirect()->back();
   }
 
+  public function create(Request $request)
+  {
+    $resource = new Offer(['bid_id' => $request->get('bid_id')]);
+    return view('shared.create', compact('resource'));
+  }
+
   /**
    * Remove the specified resource from storage.
    *

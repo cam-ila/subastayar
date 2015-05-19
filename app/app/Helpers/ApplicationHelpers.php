@@ -29,6 +29,11 @@ function pluralize($key, $file = 'models')
 |--------------------------------------------------------------------------
  */
 
+function offer_link($resource)
+{
+  return Button::normal()->withIcon(Icon::check())->asLinkTo(route('offers.create', ['bid_id' => $resource->id]));
+}
+
 function edit_link($resource)
 {
   return Button::normal()->withIcon(Icon::pencil())->asLinkTo(polymorphic_edit_route($resource));

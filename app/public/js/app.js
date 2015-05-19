@@ -6,4 +6,5 @@ $(function() {
       $(this).closest('form').submit();
     }
   });
+  $(".sortable-table").stupidtable();
 });

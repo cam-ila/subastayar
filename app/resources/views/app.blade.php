@@ -31,6 +31,7 @@
     <!-- Scripts -->
     <script src="{{ asset('/js/jquery.2.1.3.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.3.3.1.min.js') }}"></script>
+    <script src="{{ asset('/js/stupidtable.min.js') }}"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
   </body>
 </html>

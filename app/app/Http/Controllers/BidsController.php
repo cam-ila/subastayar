@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class BidsController extends Controller {
 
+
+  public function home(Request $request)
+  {
+    $query     = $request->input('query');
+    $resources = Bid::search($query)->get(['*']);
+    $model     = 'bid';
+    return view('home.index', compact('resources', 'model', 'query'));
+  }
   /**
    * Display a listing of the resource.
    *

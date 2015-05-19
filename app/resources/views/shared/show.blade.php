@@ -7,6 +7,8 @@
 
   @section('panel_actions')
   <div class="pull-right">
+      {!! offer_link($resource) !!}
+      {!! edit_link($resource) !!}
       {!! destroy_link($resource) !!}
   </div>
   @endsection {{-- end panel_actions --}}

@@ -6246,3 +6246,7 @@ form.destroy-link {
   text-transform: capitalize;
   color: #787878;
 }
+
+.sortable-table th:hover {
+  cursor: pointer;
+}

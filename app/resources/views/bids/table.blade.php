@@ -1,11 +1,17 @@
-<table class="table">
+<table class="table sortable-table">
   <thead>
     <tr>
       @eval($model = $resources->first()->model())
       @foreach ($resources->first()->getVisible() as $attribute)
-        <th>{{ trans("models.attributes.{$attribute}") }}</th>
+      <th data-sort="string-ins">
+        {{ trans("models.attributes.{$attribute}") }}
+        {!! Icon::resize_vertical() !!}
+      </th>
       @endforeach
-      <th>{{ trans('models.attributes.created_at') }}</th>
+      <th data-sort="int">
+        {{ trans('models.attributes.created_at') }}
+        {!! Icon::resize_vertical() !!}
+      </th>
       <th>{{ trans('crud.titles.actions') }}</th>
     </tr>
   </thead>
@@ -17,7 +23,7 @@
         @eval($attr = $resource->getAttribute($attribute))
         <td> {{ too_long($attr) ? substr($attr, 0, 25).' ... ' : $attr}} </td>
       @endforeach
-      <td>{{ nice_date($resource->created_at) }}</td>
+      <td data-sort-value="{{ $resource->created_at }}">{{ nice_date($resource->created_at) }}</td>
       <td>
         {!! show_link($resource) !!}
         {!! edit_link($resource) !!}
