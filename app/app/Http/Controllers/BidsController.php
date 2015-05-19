@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BidRequest;
 use App\Models\Bid as Bid;
+use App\Models\User as User;
 use Illuminate\Http\Request;
 
 class BidsController extends Controller {
@@ -38,7 +39,11 @@ class BidsController extends Controller {
    */
   public function store(BidRequest $request)
   {
-    Bid::create($request->all());
+    return $request->file('image');
+    $bid = new Bid($request->all());
+    $bid->user_id = User::first();
+    $this->setImage($request->get('image'));
+    $bid->save();
     return redirect('bids');
   }
 
@@ -73,6 +78,7 @@ class BidsController extends Controller {
   public function update(Bid $bid, BidRequest $request)
   {
     $bid->update(['name' => $request->input('name')]);
+    $this->setImage($request->get('image'));
     return redirect(route('bids.show', $bid));
   }
 
@@ -86,6 +92,14 @@ class BidsController extends Controller {
   {
     $bid->delete();
     return redirect('bids');
+  }
+
+  protected function setImage($image)
+  {
+    if ($image) {
+      $image->move(public_path() . '/img/' . time() . $image->getClientOriginalName());
+      $bid->image = $image->getRealPath();
+    }
   }
 
 }

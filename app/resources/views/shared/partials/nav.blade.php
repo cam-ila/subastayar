@@ -13,6 +13,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
+
+        @yield('filters')
+        @yield('search_bar')
+
         @if (Auth::guest())
         <li><a href="{{ url('/auth/login') }}">Ingresar</a></li>
         <li><a href="{{ url('/auth/register') }}">Registrarse</a></li>

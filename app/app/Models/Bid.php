@@ -6,7 +6,7 @@ class Bid extends Base {
 
   protected $main_attr = 'title';
   protected $table     = 'bids';
-  protected $fillable  = ['title', 'description', 'user_id', 'category_id'];
+  protected $fillable  = ['title', 'description', 'user_id', 'category_id', 'image'];
   protected $visible   = ['title', 'description', 'category'];
 
 

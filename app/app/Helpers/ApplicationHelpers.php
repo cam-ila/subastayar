@@ -87,3 +87,4 @@ function polymorphic_edit_route($resource)
 {
   return polymorphic_route($resource, 'edit');
 }
+
