@@ -91,6 +91,12 @@ return [
     |
     */
 
-    'attributes' => [],
+  'attributes' => [
+    'name'        => 'nombre',
+    'created_at'  => 'fecha de creacion',
+    'description' => 'descripcion',
+    'title'       => 'titulo',
+    'category'    => 'categoria'
+  ]
 
 ];

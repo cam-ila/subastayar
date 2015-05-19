@@ -3,12 +3,12 @@
     <tr>
       @foreach ($resources->first()->getVisible() as $attribute)
       <th data-sort="string">
-        {{ trans("models.attributes.{$attribute}") }}
+        {{ trans("validation.attributes.{$attribute}") }}
         {!! Icon::resize_vertical() !!}
       </th>
       @endforeach
       <th data-sort="int">
-        {{ trans('models.attributes.created_at') }}
+        {{ trans('validation.attributes.created_at') }}
         {!! Icon::resize_vertical() !!}
       </th>
       <th>{{ trans('crud.titles.actions') }}</th>
