@@ -47,10 +47,11 @@ class BidsController extends Controller {
    */
   public function store(BidRequest $request)
   {
-    return $request->file('image');
+    // return $request->file('image');
     $bid = new Bid($request->all());
-    $bid->user_id = User::first();
-    $this->setImage($request->get('image'));
+    // TODO: get current user
+    $bid->user_id = User::first()->id;
+    // $this->setImage($request->get('image'));
     $bid->save();
     return redirect('bids');
   }

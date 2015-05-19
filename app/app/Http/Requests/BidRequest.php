@@ -22,8 +22,11 @@ class BidRequest extends Request {
   public function rules()
   {
     return [
-      'title'   => 'required'
+      'title'       => 'required',
+      'category_id' => 'required',
+      'description' => 'required',
     ];
   }
 
 }
+// TODO: add user_id and image

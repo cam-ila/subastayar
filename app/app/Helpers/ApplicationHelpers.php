@@ -29,6 +29,12 @@ function pluralize($key, $file = 'models')
 |--------------------------------------------------------------------------
  */
 
+function all_resources($model)
+{
+  $model = ucfirst($model);
+  return call_user_func("App\Models\\{$model}::all");
+}
+
 function offer_link($resource)
 {
   return Button::normal()->withIcon(Icon::check())->asLinkTo(route('offers.create', ['bid_id' => $resource->id]));
@@ -43,7 +49,7 @@ function destroy_link($resource)
 {
   return Form::open([
     'url'   => polymorphic_route($resource, 'destroy'),
-      'class' => 'destroy-link'
+    'class' => 'destroy-link'
     ]) .
     Form::input('hidden', '_method', 'DELETE') .
     Button::danger()->withIcon(Icon::trash())->submit()->withAttributes(['class' => 'btn-destroy']);

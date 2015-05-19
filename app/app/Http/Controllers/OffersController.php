@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Offer as Offer;
-use App\Http\Requests\OfferRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\OfferRequest;
 
 class OffersController extends Controller {
 
@@ -28,7 +28,7 @@ class OffersController extends Controller {
    */
   public function store(OfferRequest $request)
   {
-    Offer::create(['name' => $request->input('name')]);
+    Offer::create($request->all());
     return redirect()->back();
   }
 
