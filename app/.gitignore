@@ -11,4 +11,4 @@ vendor/
 extra/*
 .functions
 components/*
-public/img/*
+public/uploads/img/*
