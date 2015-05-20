@@ -25,4 +25,8 @@ class Bid extends Base {
     return $this->hasMany('App\Models\Offer');
   }
 
+  public function imagePath()
+  {
+    return public_path() . '/uploads/img/';
+  }
 }

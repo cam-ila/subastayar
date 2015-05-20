@@ -24,7 +24,9 @@ class BidRequest extends Request {
     return [
       'title'       => 'required',
       'category_id' => 'required',
+      'user_id'     => 'required',
       'description' => 'required',
+      'image'       => 'required',
     ];
   }
 

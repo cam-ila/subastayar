@@ -5,6 +5,7 @@ use App\Http\Requests\BidRequest;
 use App\Models\Bid as Bid;
 use App\Models\User as User;
 use Illuminate\Http\Request;
+use Illuminate\Filesystem\Filesystem;
 
 class BidsController extends Controller {
 
@@ -47,13 +48,12 @@ class BidsController extends Controller {
    */
   public function store(BidRequest $request)
   {
-    // return $request->file('image');
     $bid = new Bid($request->all());
     // TODO: get current user
     $bid->user_id = User::first()->id;
-    // $this->setImage($request->get('image'));
+    $this->setImage($bid, $request->file('image'));
     $bid->save();
-    return redirect('bids');
+    return redirect(polymorphic_route($bid, 'show'));
   }
 
   /**
@@ -97,17 +97,19 @@ class BidsController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function destroy(Bid $bid)
+  public function destroy(Bid $bid, FileSystem $filesystem)
   {
+    $filesystem->delete($bid->imagePath() . $bid->image);
     $bid->delete();
     return redirect('bids');
   }
 
-  protected function setImage($image)
+  protected function setImage($bid, $image)
   {
     if ($image) {
-      $image->move(public_path() . '/img/' . time() . $image->getClientOriginalName());
-      $bid->image = $image->getRealPath();
+      $name = time() . '-' . $image->getClientOriginalName();
+      $image->move($bid->imagePath(), $name);
+      $bid->image = $name;
     }
   }
 

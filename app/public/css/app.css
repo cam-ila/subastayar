@@ -6232,6 +6232,10 @@ label,
   font-weight: 300;
 }
 
+body {
+  margin-bottom: 1em;
+}
+
 .item {
   padding: 1em;
 }

@@ -3,6 +3,7 @@
 
   @section('panel_body')
     {{ $resource }}
+    {{-- {!! HTML::image($resource->imagePath() . $resource->image, $resource->title, ['class' => 'img-rounded img-responsive img-thumbnail']) !!} --}}
   @endsection {{-- end panel_body --}}
 
   @section('panel_actions')
