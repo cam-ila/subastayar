@@ -29,12 +29,6 @@ function pluralize($key, $file = 'models')
 |--------------------------------------------------------------------------
  */
 
-function all_resources($model)
-{
-  $model = ucfirst($model);
-  return call_user_func("App\Models\\{$model}::all");
-}
-
 function offer_link($resource)
 {
   return Button::normal()->withIcon(Icon::check())->asLinkTo(route('offers.create', ['bid_id' => $resource->id]));
