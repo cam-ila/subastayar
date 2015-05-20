@@ -7,6 +7,7 @@ class Offer extends Base {
   protected $main_attr = 'body';
   protected $table     = 'offers';
   protected $fillable  = ['body', 'prize', 'user_id', 'bid_id'];
+  protected $visible   = ['body', 'user', 'bid'];
 
   public function user()
   {
@@ -20,8 +21,8 @@ class Offer extends Base {
 
   protected function asString()
   {
-    $buyer   = $this->user();
-    $product = $this->bid();
+    $buyer   = $this->user()->first();
+    $product = $this->bid()->first();
     return trans('models.offers.offered_by', compact('buyer', 'product'));
   }
 

@@ -14,9 +14,13 @@ class OffersController extends Controller {
    */
   public function index(Request $request)
   {
-
     $query     = $request->input('query');
-    $resources = Offer::search($query)->get(['*']);
+    $builder = Offer::search($query);
+    if ($request->input('user_id')) {
+      $resources = $builder->where(['user_id' => $request->input('user_id')])->get(['*']);
+    } else {
+      $resources = $builder->get(['*']);
+    }
     $model = 'offer';
     return view('shared.index', compact('resources', 'model', 'query'));
   }
@@ -50,4 +54,8 @@ class OffersController extends Controller {
     return redirect('offers');
   }
 
+  public function show(Offer $offer)
+  {
+    return redirect(route('bids.show', $offer->bid->id));
+  }
 }

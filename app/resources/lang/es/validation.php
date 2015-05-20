@@ -96,7 +96,10 @@ return [
     'created_at'  => 'fecha de creacion',
     'description' => 'descripcion',
     'title'       => 'titulo',
-    'category'    => 'categoria'
+    'category'    => 'categoria',
+    'user'        => 'usuario',
+    'body'        => 'cuerpo',
+    'bid'         => 'subasta',
   ]
 
 ];
