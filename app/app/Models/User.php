@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use App\Models\Base;
+use App\Models\Offer as Offer;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -43,4 +44,17 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     return $this->hasMany('App\Models\Offer');
   }
 
+  public function canEdit($resource)
+  {
+    return $resource->user == $this;
+  }
+
+  public function canOffer($bid)
+  {
+    return $bid->user != $this || $this->hasOffersFor($bid);
+  }
+  public function hasOffersFor($bid)
+  {
+    return Offer::where(['user_id' => $this->id, 'bid_id' => $bid->id])->count() == 0;
+  }
 }
