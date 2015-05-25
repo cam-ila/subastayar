@@ -51,10 +51,11 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
   public function canOffer($bid)
   {
-    return $bid->user != $this || $this->hasOffersFor($bid);
+    return $bid->user != $this && ! $this->hasOffersFor($bid);
   }
+
   public function hasOffersFor($bid)
   {
-    return Offer::where(['user_id' => $this->id, 'bid_id' => $bid->id])->count() == 0;
+    return (Offer::where(['user_id' => $this->id, 'bid_id' => $bid->id])->count()) >= 1;
   }
 }
