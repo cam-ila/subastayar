@@ -31,23 +31,31 @@ function pluralize($key, $file = 'models')
 
 function offer_link($resource)
 {
-  return Button::normal()->withIcon(Icon::check())->asLinkTo(route('offers.create', ['bid_id' => $resource->id]));
+  return Button::normal()->withIcon(Icon::check())->withAttributes(['title' => 'ofertar', 'data-toggle' => 'tooltip'])
+    ->asLinkTo(route('offers.create', ['bid_id' => $resource->id]));
 }
 
 function edit_link($resource)
 {
-  return Button::normal()->withIcon(Icon::pencil())->asLinkTo(polymorphic_edit_route($resource));
+  return Button::normal()->withIcon(Icon::pencil())->withAttributes([
+    'title' => 'editar', 
+    'data-toggle' => 'tooltip'
+  ])->asLinkTo(polymorphic_edit_route($resource));
 }
 
 function destroy_link($resource)
 {
   return Form::open([
     'url'   => polymorphic_route($resource, 'destroy'),
-    'class' => 'destroy-link'
+      'class' => 'destroy-link'
     ]) .
     Form::input('hidden', '_method', 'DELETE') .
-    Button::danger()->withIcon(Icon::trash())->submit()->withAttributes(['class' => 'btn-destroy']);
-  Form::close();
+    Button::danger()->withIcon(Icon::trash())->submit()->withAttributes([
+      'class' => 'btn-destroy',
+      'title' => 'borrar',
+      'data-toggle' => 'tooltip'
+    ]) .
+    Form::close();
 }
 
 function create_link($model)
@@ -58,7 +66,13 @@ function create_link($model)
 
 function show_link($resource)
 {
-  return Button::primary()->withIcon(Icon::eye_open())->asLinkTo(polymorphic_route($resource, 'show'));
+  return Button::primary()->withAttributes(['title' => 'ver', 'data-toggle' => 'tooltip'])
+    ->withIcon(Icon::eye_open())->asLinkTo(polymorphic_route($resource, 'show'));
+}
+
+function clean_filters_link($model)
+{
+  return Button::warning('limpiar filtros')->asLinkTo(route(str_plural($model) . '.index'));
 }
 
 function too_long($string)

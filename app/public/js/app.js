@@ -7,4 +7,5 @@ $(function() {
     }
   });
   $(".sortable-table").stupidtable();
+  $('[data-toggle="tooltip"]').tooltip()
 });
