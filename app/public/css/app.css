@@ -6254,3 +6254,11 @@ form.destroy-link {
 .sortable-table th:hover {
   cursor: pointer;
 }
+
+
+.comment {
+  margin: 2em auto;
+}
+.media .media-object{
+  max-height: 3em;
+}

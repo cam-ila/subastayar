@@ -85,6 +85,34 @@ function nice_date($date)
   return date('d F, Y', strtotime($date));
 }
 
+function avatarAsset()
+{
+  return '/img/avatar-blank.jpg';
+}
+
+function avatarImg()
+{
+  return HTML::image(avatarAsset(), 'avatar', ['class' => 'img-rounded img-responsive img-thumbnail']) ;
+}
+
+function mediaObjectOptions($comment)
+{
+  $options            = [];
+  $options['image']   = avatarAsset();
+  $options['link']    = '#';
+  $options['heading'] = $comment->user;
+  $options['body']    = $comment->body;
+  if ($comment->response) {
+    $options['nest'] = [
+      'image'   => avatarAsset(),
+      'link'    => '#',
+      'heading' => $comment->bid->user,
+      'body'    => $comment->response
+      ];
+  }
+  return $options;
+}
+
 
 /*
 |--------------------------------------------------------------------------
