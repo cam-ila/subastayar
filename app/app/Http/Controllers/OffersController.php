@@ -7,6 +7,11 @@ use App\Http\Requests\OfferRequest;
 
 class OffersController extends Controller {
 
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -15,13 +20,8 @@ class OffersController extends Controller {
   public function index(Request $request)
   {
     $query     = $request->input('query');
-    $builder = Offer::search($query);
-    if ($request->input('user_id')) {
-      $resources = $builder->where(['user_id' => $request->input('user_id')])->get(['*']);
-    } else {
-      $resources = $builder->get(['*']);
-    }
-    $model = 'offer';
+    $resources = Offer::search($query)->get(['*']);
+    $model     = 'offer';
     return view('shared.index', compact('resources', 'model', 'query'));
   }
 
@@ -32,8 +32,12 @@ class OffersController extends Controller {
    */
   public function store(OfferRequest $request)
   {
-    Offer::create($request->all());
-    return redirect()->back();
+    $resource = new Offer($request->all());
+    if ($resource->save()){
+      return redirect(route('bids.show', $request->input('bid_id')));
+    } else {
+      return view('shared.create', compact('resource'));
+    }
   }
 
   public function create(Request $request)

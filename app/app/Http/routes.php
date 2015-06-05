@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', ['uses' => 'BidsController@home', 'as' => 'home']);
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
+Route::get('/subasta/{id}', ['uses' => 'HomeController@show', 'as' => 'home.show']);
+Route::get('/categoria/{id}', ['uses' => 'HomeController@bidsByCategory', 'as' => 'bidsByCategory']);
 
 Route::get('home', 'HomeController@index');
 
@@ -23,6 +25,9 @@ Route::resource('bids', 'BidsController');
 
 Route::model('offers', 'App\Models\Offer');
 Route::resource('offers', 'OffersController');
+
+Route::resource('user.offers', 'UserOffersController');
+Route::resource('user.bids', 'UserBidsController');
 
 Route::controllers([
   'auth'     => 'Auth\AuthController',

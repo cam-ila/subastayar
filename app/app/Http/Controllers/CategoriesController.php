@@ -14,9 +14,9 @@ class CategoriesController extends Controller {
    */
   public function index(Request $request)
   {
-    $query        = $request->input('query');
-    $model        = ($request->input('model')) ? $request->input('model') : 'category';
-    $resources    = Category::search($query)->get();
+    $query     = $request->input('query');
+    $model     = 'category';
+    $resources = Category::search($query)->get();
     return view('shared.index')->with(compact('resources', 'model', 'query'));
   }
 

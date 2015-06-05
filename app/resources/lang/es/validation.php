@@ -100,6 +100,7 @@ return [
     'user'        => 'usuario',
     'body'        => 'cuerpo',
     'bid'         => 'subasta',
+    'prize'       => 'precio',
   ]
 
 ];
