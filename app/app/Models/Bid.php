@@ -25,6 +25,11 @@ class Bid extends Base {
     return $this->hasMany('App\Models\Offer');
   }
 
+  public function comments()
+  {
+    return $this->hasMany('App\Models\Comment');
+  }
+
   public function imagePath()
   {
     return public_path() . '/uploads/img/';
