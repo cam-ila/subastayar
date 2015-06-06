@@ -111,7 +111,7 @@ class BidsController extends Controller {
   {
     $filesystem->delete($bid->imagePath() . $bid->image);
     $bid->delete();
-    return redirect('bids');
+    return redirect()->back();
   }
 
   public function createOffer(Bid $bid)

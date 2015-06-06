@@ -49,7 +49,7 @@ class OffersController extends Controller {
   public function destroy(Offer $offer)
   {
     $offer->delete();
-    return redirect('offers');
+    return redirect()->back();
   }
 
   public function edit(Offer $resource)
