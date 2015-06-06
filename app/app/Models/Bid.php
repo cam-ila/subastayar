@@ -32,6 +32,6 @@ class Bid extends Base {
 
   public function imagePath()
   {
-    return public_path() . '/uploads/img/';
+    return '/uploads/img/';
   }
 }
