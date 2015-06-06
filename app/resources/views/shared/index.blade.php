@@ -17,8 +17,9 @@
 
   @section('panel_actions')
   <div class="pull-right">
-    {!! create_link($model) !!}
-    {!! clean_filters_link($model) !!}
+    @if($model != 'offer')
+      {!! create_link($model) !!}
+    @endif
   </div>
   @endsection
 

@@ -70,11 +70,6 @@ function show_link($resource)
     ->withIcon(Icon::eye_open())->asLinkTo(polymorphic_route($resource, 'show'));
 }
 
-function clean_filters_link($model)
-{
-  return Button::warning('limpiar filtros')->asLinkTo(route(str_plural($model) . '.index'));
-}
-
 function too_long($string)
 {
   return (strlen($string) > 25);

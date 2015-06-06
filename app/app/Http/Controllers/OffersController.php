@@ -52,8 +52,19 @@ class OffersController extends Controller {
     return redirect('offers');
   }
 
+  public function edit(Offer $resource)
+  {
+    return view('shared.edit', compact('resource'));
+  }
+
   public function show(Offer $resource)
   {
     return view('shared.show', compact('resource'));
+  }
+
+  public function update(Offer $offer, OfferRequest $request)
+  {
+    $offer->update($request->all());
+    return redirect(route('offers.show', $offer));
   }
 }
