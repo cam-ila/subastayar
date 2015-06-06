@@ -7,8 +7,12 @@
 
 @section('content')
 
+<div class="container">
 @foreach($resources as $resource)
-  @include('bids.home_partial', ['bid' => $resource])
+  <div class="row">
+    @include('bids.home_partial', ['bid' => $resource])
+  </div>
 @endforeach
+</div>
 
 @endsection

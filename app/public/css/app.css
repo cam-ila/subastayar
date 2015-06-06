@@ -6262,3 +6262,7 @@ form.destroy-link {
 .media .media-object{
   max-height: 3em;
 }
+
+.img-wrapper {
+  max-width: 600px;
+}
