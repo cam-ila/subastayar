@@ -10,14 +10,14 @@
 
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
   @if($resource->image)
-  <img src="{{ $resource->imagePath() }}" alt="{{ $resource->title }}" class="img-thumbnail">
+    {!! HTML::image('/uploads/img/' . $resource->image, $resource->title, ['class' => 'img-rounded img-responsive img-thumbnail']) !!}
   @endif
-  {!! Form::file('image', ['class' => 'sarasa']) !!}
+  {!! Form::file('image') !!}
 </div>
 
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
   <label for="category">Categoria:</label>
-  {!! Form::select('category_id', App\Models\Category::query()->lists('name', 'id'), null, ['class' => 'form-control', 'id' => 'category', 'required' => true]) !!}
+  {!! Form::select('category_id', App\Models\Category::query()->lists('name', 'id'), $resource->category_id, ['class' => 'form-control', 'id' => 'category', 'required' => true]) !!}
 </div>
 
 <div class="actions pull-right">
