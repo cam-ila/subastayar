@@ -3,7 +3,7 @@
 @section('content')
 
   @section('panel_body')
-      @include('shared.partials.form', ['method' => 'PUT', 'url' => polymorphic_edit_route($resource)])
+      @include('shared.partials.form', ['method' => 'PUT', 'url' => polymorphic_route($resource, 'show')])
   @endsection
 
   @include('shared.partials.panel', [
