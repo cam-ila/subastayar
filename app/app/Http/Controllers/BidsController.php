@@ -59,7 +59,8 @@ class BidsController extends Controller {
    */
   public function store(BidRequest $request)
   {
-    $bid = new Bid($request->all());
+    $bid = new Bid($request->except(['image']));
+    $this->setImage($bid, $request->file('image'));
     $bid->save();
     return redirect(polymorphic_route($bid, 'show'));
   }
@@ -94,7 +95,9 @@ class BidsController extends Controller {
    */
   public function update(Bid $bid, BidRequest $request)
   {
-    $bid->update($request->all());
+    $this->setImage($bid, $request->file('image'));
+    $bid->update($request->except(['image']));
+    $bid->save();
     return redirect(route('bids.show', $bid));
   }
 
@@ -115,6 +118,14 @@ class BidsController extends Controller {
   {
     $resource = new Offer(['bid_id' => $bid->id]);
     return view('shared.create', compact('resource'));
+  }
+  protected function setImage($bid, $image)
+  {
+    if ($image) {
+      $name = time() . '-' . $image->getClientOriginalName();
+      $image->move(public_path() . $bid->imagePath(), $name);
+      $bid->image = $name;
+    }
   }
 
 }
