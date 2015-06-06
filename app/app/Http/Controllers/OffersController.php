@@ -34,16 +34,10 @@ class OffersController extends Controller {
   {
     $resource = new Offer($request->all());
     if ($resource->save()){
-      return redirect(route('bids.show', $request->input('bid_id')));
+      return redirect(route('bids.show', $resource->bid));
     } else {
       return view('shared.create', compact('resource'));
     }
-  }
-
-  public function create(Request $request)
-  {
-    $resource = new Offer(['bid_id' => $request->get('bid_id')]);
-    return view('shared.create', compact('resource'));
   }
 
   /**
@@ -58,8 +52,8 @@ class OffersController extends Controller {
     return redirect('offers');
   }
 
-  public function show(Offer $offer)
+  public function show(Offer $resource)
   {
-    return redirect(route('bids.show', $offer->bid->id));
+    return view('shared.show', compact('resource'));
   }
 }

@@ -3,9 +3,11 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BidRequest;
 use App\Models\Bid as Bid;
+use App\Models\Offer as Offer;
 use App\Models\User as User;
 use Illuminate\Http\Request;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Auth;
 
 class BidsController extends Controller {
 
@@ -58,9 +60,6 @@ class BidsController extends Controller {
   public function store(BidRequest $request)
   {
     $bid = new Bid($request->all());
-    // TODO: get current user
-    $bid->user_id = User::first()->id;
-    $this->setImage($bid, $request->file('image'));
     $bid->save();
     return redirect(polymorphic_route($bid, 'show'));
   }
@@ -95,8 +94,7 @@ class BidsController extends Controller {
    */
   public function update(Bid $bid, BidRequest $request)
   {
-    $bid->update(['name' => $request->input('name')]);
-    $this->setImage($request->get('image'));
+    $bid->update($request->all());
     return redirect(route('bids.show', $bid));
   }
 
@@ -113,13 +111,10 @@ class BidsController extends Controller {
     return redirect('bids');
   }
 
-  protected function setImage($bid, $image)
+  public function createOffer(Bid $bid)
   {
-    if ($image) {
-      $name = time() . '-' . $image->getClientOriginalName();
-      $image->move($bid->imagePath(), $name);
-      $bid->image = $name;
-    }
+    $resource = new Offer(['bid_id' => $bid->id]);
+    return view('shared.create', compact('resource'));
   }
 
 }

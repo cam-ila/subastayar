@@ -31,8 +31,8 @@ function pluralize($key, $file = 'models')
 
 function offer_link($resource)
 {
-  return Button::normal()->withIcon(Icon::check())->withAttributes(['title' => 'ofertar', 'data-toggle' => 'tooltip'])
-    ->asLinkTo(route('offers.create', ['bid_id' => $resource->id]));
+  return Button::success()->withIcon(Icon::check())->withAttributes(['title' => 'ofertar', 'data-toggle' => 'tooltip'])
+    ->asLinkTo(route('bids.offer.create', ['bid' => $resource]));
 }
 
 function edit_link($resource)
@@ -112,7 +112,6 @@ function mediaObjectOptions($comment)
   }
   return $options;
 }
-
 
 /*
 |--------------------------------------------------------------------------
