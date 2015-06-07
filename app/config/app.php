@@ -197,6 +197,12 @@ return [
     'Icon'        => 'Bootstrapper\Facades\Icon',
     'Button'      => 'Bootstrapper\Facades\Button',
     'MediaObject' => 'Bootstrapper\Facades\MediaObject',
+    'Bid'         => 'App\Models\Bid',
+    'Category'    => 'App\Models\Category',
+    'Comment'     => 'App\Models\Comment',
+    'Offer'       => 'App\Models\Offer',
+    'Sale'        => 'App\Models\Sale',
+    'User'        => 'App\Models\User',
 
   ],
 
