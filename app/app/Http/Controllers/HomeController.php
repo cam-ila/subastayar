@@ -25,12 +25,12 @@ class HomeController extends Controller {
     return view('home.bid', compact('resource'));
   }
 
-  public function bidsByCategory($id, Request $request)
+  public function bidsByCategory($category_id, Request $request)
   {
     $query     = $request->input('query');
-    $model = 'bid';
-    $resources = Bid::whereCategoryId($id)->get();
-    return view('home.index', compact('resources', 'query', 'model'));
+    $model     = 'bid';
+    $resources = Bid::whereCategoryId($category_id)->get();
+    return view('home.index', compact('resources', 'query', 'model', 'category_id'));
   }
 
 }
