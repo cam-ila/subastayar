@@ -30,4 +30,3 @@ class BidRequest extends Request {
   }
 
 }
-// TODO: add user_id and image

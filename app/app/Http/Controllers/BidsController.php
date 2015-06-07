@@ -109,9 +109,13 @@ class BidsController extends Controller {
    */
   public function destroy(Bid $bid, FileSystem $filesystem)
   {
-    $filesystem->delete($bid->imagePath() . $bid->image);
-    $bid->delete();
-    return redirect()->back();
+    if ($bid->offers->count() == 0) {
+      $filesystem->delete($bid->imagePath() . $bid->image);
+      $bid->delete();
+      return redirect()->back()->withMessage('borrada');
+    } else {
+      return redirect()->back()->withError('ya tiene ofertas');
+    }
   }
 
   public function createOffer(Bid $bid)
@@ -119,6 +123,7 @@ class BidsController extends Controller {
     $resource = new Offer(['bid_id' => $bid->id]);
     return view('shared.create', compact('resource'));
   }
+
   protected function setImage($bid, $image)
   {
     if ($image) {
