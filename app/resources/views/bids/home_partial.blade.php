@@ -2,7 +2,7 @@
   <hr>
   <div class="img-wrapper">
     <a href="{{ route('home.show', $bid)}}">
-    {!! HTML::image('/uploads/img/' . $resource->image, $resource->title, ['class' => 'img-rounded img-responsive img-thumbnail']) !!}
+      {!! HTML::image('/uploads/img/' . $bid->image, $bid->title, ['class' => 'img-rounded img-responsive img-thumbnail']) !!}
     </a>
   </div>
   <hr>
@@ -11,9 +11,9 @@
   </div>
   <hr>
   <div class="actions">
-        {!! offer_link($resource) !!}
-        {!! edit_link($resource) !!}
-        {!! destroy_link($resource) !!}
+        {!! offer_link($bid) !!}
+        {!! edit_link($bid) !!}
+        {!! destroy_link($bid) !!}
   </div>
   <hr>
 </div>
