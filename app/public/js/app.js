@@ -9,7 +9,12 @@ $(function() {
   $('[data-toggle="tooltip"]').tooltip();
 
   $(document).on('change', '.js-filter-form', function() {
-    window.location = $(this).data('url') + $('.js-filter-form option:selected').val();
+    var categoryId = $('.js-filter-form option:selected').val();
+    if (categoryId != 0) {
+      var url = $(this).data('url') + categoryId;
+    } else { var url = '/'; }
+
+    window.location = url;
   });
 
 });
