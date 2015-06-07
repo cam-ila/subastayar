@@ -34,9 +34,9 @@ class OffersController extends Controller {
   {
     $resource = new Offer($request->all());
     if ($resource->save()){
-      return redirect(route('bids.show', $resource->bid));
+      return redirect(route('bids.show', $resource->bid))->withMessage("Oferta Creada.");
     } else {
-      return view('shared.create', compact('resource'));
+      return redirect()->back()->with(compact('resource'));
     }
   }
 

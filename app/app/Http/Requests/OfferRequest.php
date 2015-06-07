@@ -23,9 +23,8 @@ class OfferRequest extends Request {
   {
     return [
       'bid_id'  => 'required',
-      'user_id' => 'required',
+      'user_id' => 'required|unique:offers,user_id,bid_id',
       'body'    => 'required',
-      'prize'   => 'required'
     ];
   }
 
