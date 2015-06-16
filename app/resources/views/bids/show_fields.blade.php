@@ -11,4 +11,12 @@
       @include('bids.comments', ['bid' => $resource])
     </div>
   </div>
+  @if(Auth::user() == $resource->user)
+  <div class="row">
+    <h4>Ofertas:</h4>
+    <div class="col-md-12">
+      @include('bids.offers', ['bid' => $resource])
+    </div>
+  </div>
+  @endif
 </div>

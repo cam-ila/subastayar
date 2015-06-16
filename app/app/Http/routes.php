@@ -26,6 +26,8 @@ Route::get('/bids/{bids}/offer/create', ['uses' => 'BidsController@createOffer',
 Route::model('offers', 'App\Models\Offer');
 Route::resource('offers', 'OffersController');
 
+Route::post('/sales/store', ['uses' => 'SalesController@store', 'as' => 'sales.store']);
+
 Route::resource('user.offers', 'UserOffersController');
 Route::resource('user.bids', 'UserBidsController');
 

@@ -2,7 +2,7 @@
 
 use App\Models\Base;
 
-class Sale extends Model {
+class Sale extends Base {
 
   protected $table    = 'sales';
   protected $fillable = ['offer_id', 'bid_id'];
