@@ -10,7 +10,7 @@
       @include(str_plural($resources->first()->model()).'.table')
     @else
     <div class="alert alert-warning">
-      <p>{{ trans('no_records') }}</p>
+      <p>{{ trans('messages.no_records') }}</p>
     </div>
     @endif
   @endsection
