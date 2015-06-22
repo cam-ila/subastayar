@@ -1,4 +1,8 @@
-<div class="bid">
+<div class="bid"
+     data-date="{{ $bid->date }}"
+     data-title="{{ $bid->title }}"
+     data-category="{{ $bid->category }}"
+  >
   <hr>
   <div class="img-wrapper">
     <a href="{{ route('home.show', $bid)}}">

@@ -17,4 +17,8 @@ $(function() {
     window.location = url;
   });
 
+  var $sortables = $('.index-bid-container');
+  $(document).on('click', '.js-sort-button', function(){
+    tinysort($sortables, {selector: '.bid', data: $(this).data('sortby')});
+  });
 });
