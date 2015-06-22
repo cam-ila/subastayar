@@ -35,14 +35,11 @@ class SalesController extends Controller {
    */
   public function store(Request $request)
   {
-    $sale           = new Sale();
-    $offer          = Offer::find($request->get('offer'));
-    $sale->offer_id = $offer->id;
-    $sale->bid_id   = $offer->bid->id;
+    $sale = new Sale($request->all());
     if ($sale->save()) {
       return redirect()->back()->withMessage('se ha registrado la oferta ganadora');
     } else {
-      return redirect()->back();
+      return redirect()->back()->withError('no se pudo seleccionar la oferta como ganadora');
     }
   }
 

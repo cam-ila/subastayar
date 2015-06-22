@@ -95,13 +95,11 @@ function mediaObjectOptions($comment)
   $options            = [];
   $options['image']   = avatarAsset();
   $options['link']    = '#';
-  $options['heading'] = $comment->user;
   $options['body']    = $comment->body;
   if ($comment->response) {
     $options['nest'] = [
       'image'   => avatarAsset(),
       'link'    => '#',
-      'heading' => $comment->bid->user,
       'body'    => $comment->response
       ];
   }
