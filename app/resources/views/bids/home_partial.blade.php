@@ -1,5 +1,5 @@
 <div class="bid"
-     data-date="{{ $bid->date }}"
+     data-date="{{ $bid->created_at }}"
      data-title="{{ $bid->title }}"
      data-category="{{ $bid->category }}"
   >

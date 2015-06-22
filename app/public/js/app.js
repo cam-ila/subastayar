@@ -19,6 +19,8 @@ $(function() {
 
   var $sortables = $('.index-bid-container');
   $(document).on('click', '.js-sort-button', function(){
-    tinysort($sortables, {selector: '.bid', data: $(this).data('sortby')});
+    var order = ($(this).data('order') === 'asc' ? 'desc' : 'asc');
+    $(this).data('order', order);
+    tinysort($sortables, {selector: '.bid', data: $(this).data('sortby'), order: order});
   });
 });

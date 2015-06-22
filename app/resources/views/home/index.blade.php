@@ -11,9 +11,9 @@
   <div class="row">
     <div class="sort-actions">
       <label for=""> Ordernar por:</label>
-      {!! Button::success('nombre')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'title']) !!}
-      {!! Button::success('categoria')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'date']) !!}
-      {!! Button::success('fecha')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'category']) !!}
+      {!! Button::success('nombre')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'title', 'data-order' => 'desc']) !!}
+      {!! Button::success('fecha')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'date', 'data-order' => 'desc']) !!}
+      {!! Button::success('categoria')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'category', 'data-order' => 'desc']) !!}
     </div>
     @if(!$resources->count() == 0)
     @foreach($resources as $resource)
