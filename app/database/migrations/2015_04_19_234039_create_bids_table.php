@@ -22,6 +22,7 @@ class CreateBidsTable extends Migration {
       $table->integer('category_id')->unsigned()->index();
       $table->string('image');
       $table->timestamp('expires_at');
+      $table->boolean('active')->default(true);
       $table->timestamps();
 
       // Constraints

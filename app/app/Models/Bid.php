@@ -34,4 +34,9 @@ class Bid extends Base {
   {
     return '/uploads/img/';
   }
+
+  public function scopeActive($query)
+  {
+    return $query->where('active', '=', true);
+  }
 }
