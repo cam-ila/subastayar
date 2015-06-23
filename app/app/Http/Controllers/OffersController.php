@@ -33,10 +33,10 @@ class OffersController extends Controller {
   public function store(OfferRequest $request)
   {
     $resource = new Offer($request->all());
-    if ($resource->save()){
+    if (Offer::where('user_id', '=', $resource->user_id)->where('bid_id', '=', $resource->bid_id)->count() == 0 && $resource->save()){
       return redirect(route('bids.show', $resource->bid))->withMessage("Oferta Creada.");
     } else {
-      return redirect()->back()->with(compact('resource'));
+      return redirect(route('home.show', $resource->bid))->withError('Ya ha ofertado por esta subasta')->with(compact('resource'));
     }
   }
 
