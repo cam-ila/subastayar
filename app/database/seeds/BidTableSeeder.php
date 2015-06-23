@@ -22,11 +22,13 @@ class BidTableSeeder extends Seeder {
         'title'       => 'Guantes de acero',
         'description' => 'Guante de malla de acero inox. tejido, anticorte, marca *manulatex* de industria francesa',
         'category_id' => $ropa->id,
+        'image'       => 'guante.jpg'
       ]),
       new Bid([
         'title'       => 'Espejo',
         'description' => 'Espejo sin marco. Medidas: 0.8m x 1.2m',
         'category_id' => $antig->id,
+        'image'       => 'espejo.jpg'
       ])
     ]);
 
@@ -35,11 +37,13 @@ class BidTableSeeder extends Seeder {
         'title'       => 'Llama',
         'description' => 'Llama adulta oriunda de Tilcara. Es mansita',
         'category_id' => $animales->id,
+        'image'       => 'llama.jpg'
       ]),
       new Bid([
         'title'       => 'Kriptonita',
         'description' => '200 gramos de Kriptonita',
         'category_id' => $otros->id,
+        'image'       => 'kriptonita.jpg'
       ])
     ]);
 
@@ -48,6 +52,7 @@ class BidTableSeeder extends Seeder {
         'title'       => 'Aceite y Vinagre',
         'description' => '200ml de aceite y 300ml de vinagre. No incluye fascos',
         'category_id' => $alimentos->id,
+        'image'       => 'aceite.jpg'
       ])
     ]);
   }
