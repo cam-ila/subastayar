@@ -92,15 +92,15 @@ function avatarImg()
 
 function mediaObjectOptions($comment)
 {
-  $options            = [];
-  $options['image']   = avatarAsset();
-  $options['link']    = '#';
-  $options['body']    = $comment->body;
+  $options          = [];
+  $options['image'] = avatarAsset();
+  $options['link']  = '#';
+  $options['body']  = $comment->body;
   if ($comment->response) {
     $options['nest'] = [
-      'image'   => avatarAsset(),
-      'link'    => '#',
-      'body'    => $comment->response
+      'image' => avatarAsset(),
+      'link'  => '#',
+      'body'  => $comment->response
       ];
   }
   return $options;
