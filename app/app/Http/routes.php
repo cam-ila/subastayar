@@ -31,6 +31,9 @@ Route::post('/sales/store', ['uses' => 'SalesController@store', 'as' => 'sales.s
 Route::resource('user.offers', 'UserOffersController');
 Route::resource('user.bids', 'UserBidsController');
 
+Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);
+Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'users.setAdmin']);
+
 Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
