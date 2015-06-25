@@ -23,11 +23,7 @@ class BidsController extends Controller {
     $model     = 'bid';
     return view('home.index', compact('resources', 'model', 'query'));
   }
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
+
   public function index(Request $request)
   {
     $query     = $request->input('query');
@@ -36,22 +32,12 @@ class BidsController extends Controller {
     return view('shared.index', compact('resources', 'model', 'query'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
   public function create()
   {
     $resource = new Bid;
     return view('shared.create', compact('resource'));
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
   public function store(BidRequest $request)
   {
     $bid = new Bid($request->except(['image']));
@@ -60,23 +46,11 @@ class BidsController extends Controller {
     return redirect(polymorphic_route($bid, 'show'));
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
   public function show(Bid $resource)
   {
     return view('shared.show', compact('resource'));
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
   public function edit(Bid $resource)
   {
     if ($resource->user == Auth::user()) {
@@ -86,12 +60,6 @@ class BidsController extends Controller {
     }
   }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
   public function update(Bid $bid, BidRequest $request)
   {
     if ($resource->user == Auth::user()) {
@@ -104,12 +72,6 @@ class BidsController extends Controller {
     }
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
   public function destroy(Bid $bid, FileSystem $filesystem)
   {
     if ($bid->offers->count() == 0) {
