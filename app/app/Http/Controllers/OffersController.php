@@ -12,11 +12,6 @@ class OffersController extends Controller {
     $this->middleware('auth');
   }
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
   public function index(Request $request)
   {
     $query     = $request->input('query');
@@ -25,11 +20,6 @@ class OffersController extends Controller {
     return view('shared.index', compact('resources', 'model', 'query'));
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
   public function store(OfferRequest $request)
   {
     $resource = new Offer($request->all());
@@ -40,12 +30,6 @@ class OffersController extends Controller {
     }
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
   public function destroy(Offer $offer)
   {
     $offer->delete();

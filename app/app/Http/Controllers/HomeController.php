@@ -6,11 +6,6 @@ use App\Models\User as User;
 
 class HomeController extends Controller {
 
-  /**
-   * Show the application dashboard to the user.
-   *
-   * @return Response
-   */
   public function index(Request $request)
   {
     $query     = $request->input('query');
