@@ -79,7 +79,11 @@ class BidsController extends Controller {
    */
   public function edit(Bid $resource)
   {
-    return view('shared.edit', compact('resource'));
+    if ($resource->user == Auth::user()) {
+      return view('shared.edit', compact('resource'));
+    } else {
+      return redirect()->back()->withError('Esta subasta no le pertenece.');
+    }
   }
 
   /**
@@ -90,10 +94,14 @@ class BidsController extends Controller {
    */
   public function update(Bid $bid, BidRequest $request)
   {
-    $this->setImage($bid, $request->file('image'));
-    $bid->update($request->except(['image']));
-    $bid->save();
-    return redirect(route('bids.show', $bid));
+    if ($resource->user == Auth::user()) {
+      $this->setImage($bid, $request->file('image'));
+      $bid->update($request->except(['image']));
+      $bid->save();
+      return redirect(route('bids.show', $bid));
+    } else {
+      return redirect()->back()->withError('Esta subasta no le pertenece.');
+    }
   }
 
   /**
@@ -107,9 +115,9 @@ class BidsController extends Controller {
     if ($bid->offers->count() == 0) {
       $filesystem->delete($bid->imagePath() . $bid->image);
       $bid->delete();
-      return redirect()->back()->withMessage('borrada');
+      return redirect()->back()->withMessage('La subasta fue eliminada exitosamente.');
     } else {
-      return redirect()->back()->withError('ya tiene ofertas');
+      return redirect()->back()->withError('La subasta ya tiene ofertas.');
     }
   }
 
