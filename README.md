@@ -31,13 +31,19 @@ Pasos para levantar la aplicacion.
     homestead ssh
   ```
 
-5. Crear la base de datos
+5. Instalar las dependencias
+
+  ```bash
+    composer install
+  ```
+
+6. Crear la base de datos
 
   ```bash
     mysql -uhomestead -psecret -e 'create database bestnid'
   ```
 
-6. Hidratar la base de datos
+7. Hidratar la base de datos
 
   ```bash
     php artisan migrate --seed
