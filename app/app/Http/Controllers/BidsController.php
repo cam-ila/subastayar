@@ -31,12 +31,7 @@ class BidsController extends Controller {
   public function index(Request $request)
   {
     $query     = $request->input('query');
-    $builder = Bid::search($query);
-    if ($request->input('user_id')) {
-      $resources = $builder->where(['user_id' => $request->input('user_id')])->get(['*']);
-    } else {
-      $resources = $builder->get(['*']);
-    }
+    $resources = Bid::search($query)->get(['*']);
     $model     = 'bid';
     return view('shared.index', compact('resources', 'model', 'query'));
   }
