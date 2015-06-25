@@ -3,8 +3,6 @@
 new_session -n 'Editor'
 
 send_line 'Editor' ${EDITOR:-vim}
-hsplit 'Editor' -p 20
-send_keys 'Editor'.2 'homestead ssh'
 
 new_window -n 'Console'
 send_line 'Console' 'homestead status'
