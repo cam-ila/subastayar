@@ -28,7 +28,13 @@ function pluralize($key, $file = 'models')
 | View Helpers
 |--------------------------------------------------------------------------
  */
-
+function comment_link ($resource)
+{
+  return Button::normal()->withIcon(Icon::comment())->withAttributes([
+    'title' => 'comentar', 
+    'data-toggle' => 'tooltip'
+  ]) -> asLinkTo (route('comments.create',  ['bid' => $resource] ));
+}
 function offer_link($resource)
 {
   return Button::success()->withIcon(Icon::check())->withAttributes(['title' => 'ofertar', 'data-toggle' => 'tooltip'])
@@ -124,7 +130,8 @@ function polymorphic_store_route($resource)
   return polymorphic_route($resource, 'store');
 }
 
-function polymorphic_edit_route($resource)
+function 
+polymorphic_edit_route($resource)
 {
   return polymorphic_route($resource, 'edit');
 }

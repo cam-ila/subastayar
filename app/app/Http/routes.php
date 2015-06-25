@@ -35,3 +35,7 @@ Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
 ]);
+
+
+Route::model('comments', 'App\Models\Comments');
+Route::resource('comments', 'CommentsController');

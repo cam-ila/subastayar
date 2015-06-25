@@ -11,6 +11,7 @@
   </div>
   <hr>
   <div class="actions">
+        {!! comment_link($bid) !!}
         {!! offer_link($bid) !!}
         {!! edit_link($bid) !!}
         {!! destroy_link($bid) !!}

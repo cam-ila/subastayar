@@ -121,8 +121,8 @@ class BidsController extends Controller {
   public function createOffer(Bid $bid)
   {
     $resource = new Offer(['bid_id' => $bid->id]);
-    return view('shared.create', compact('resource'));
-  }
+    return view('shared.create', compact('resource')); 
+  }    
 
   protected function setImage($bid, $image)
   {
