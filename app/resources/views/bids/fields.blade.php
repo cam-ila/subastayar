@@ -16,6 +16,11 @@
 </div>
 
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
+  <label for="category" data-toggle="tooltip" title="Cantidad de dias a mantener la subasta abierta.">Duracion de la subasta:</label>
+  {!! Form::selectRange('days_to_expiration', 1, 15, 1, ['class' => 'form-control', 'id' => 'category', 'required' => true]) !!}
+</div>
+
+<div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
   <label for="category">Categoria:</label>
   {!! Form::select('category_id', App\Models\Category::query()->lists('name', 'id'), $resource->category_id, ['class' => 'form-control', 'id' => 'category', 'required' => true]) !!}
 </div>

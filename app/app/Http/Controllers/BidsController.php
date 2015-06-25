@@ -16,18 +16,12 @@ class BidsController extends Controller {
     $this->middleware('auth');
   }
 
-  public function home(Request $request)
-  {
-    $query     = $request->input('query');
-    $resources = Bid::search($query)->get(['*']);
-    $model     = 'bid';
-    return view('home.index', compact('resources', 'model', 'query'));
-  }
-
   public function index(Request $request)
   {
     $query     = $request->input('query');
-    $resources = Bid::search($query)->get(['*']);
+    $resources = Bid::search($query);
+    if (!Auth::user()->admin) { $resources = $resources->whereUserId(Auth::user()->id); }
+    $resources = $resources->get(['*']);
     $model     = 'bid';
     return view('shared.index', compact('resources', 'model', 'query'));
   }
@@ -48,7 +42,11 @@ class BidsController extends Controller {
 
   public function show(Bid $resource)
   {
-    return view('shared.show', compact('resource'));
+    if ($resource->user == Auth::user()) {
+      return view('shared.show', compact('resource'));
+    } else {
+      return redirect(route('home'))->withError('Esta subasta no le pertenece.');
+    }
   }
 
   public function edit(Bid $resource)

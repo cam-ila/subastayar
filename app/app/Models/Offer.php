@@ -19,6 +19,11 @@ class Offer extends Base {
     return $this->belongsTo('App\Models\Bid');
   }
 
+  public function sale()
+  {
+    return $this->hasOne('App\Models\Sale');
+  }
+
   protected function asString()
   {
     $buyer   = $this->user()->first();

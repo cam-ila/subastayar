@@ -9,28 +9,28 @@ class Sale extends Base {
 
   public function offer()
   {
-    return $this->hasOne('App\Models\Offer');
+    return $this->belongsTo('App\Models\Offer');
   }
 
   public function bid()
   {
-    return $this->hasOne('App\Models\Bid');
+    return $this->belongsTo('App\Models\Bid');
   }
 
   public function buyer()
   {
-    return $this->offer()->user();
+    return $this->offer->user;
   }
 
   public function seller()
   {
-    return $this->bid()->user();
+    return $this->bid->user;
   }
 
   protected function asString()
   {
     $seller  = $this->seller();
-    $product = $this->bid();
+    $product = $this->bid;
     return trans('models.sales.sold_by', compact('seller', 'product'));
   }
 

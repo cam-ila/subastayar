@@ -22,10 +22,11 @@ class BidRequest extends Request {
   public function rules()
   {
     return [
-      'title'       => 'required',
-      'category_id' => 'required',
-      'user_id'     => 'required',
-      'description' => 'required',
+      'title'              => 'required',
+      'category_id'        => 'required',
+      'user_id'            => 'required',
+      'description'        => 'required',
+      'days_to_expiration' => 'required'
     ];
   }
 
