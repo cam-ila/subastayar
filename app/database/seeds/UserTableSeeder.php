@@ -10,7 +10,7 @@ class UserTableSeeder extends Seeder {
 
   public function run()
   {
-    User::create(['name' => 'Ramiro Lamas'     , 'email' => 'ramirolamas@ramiro.com'          , 'password' => Hash::make('ramiro')]);
+    User::create(['name' => 'Ramiro Lamas'     , 'email' => 'ramirolamas@ramiro.com'          , 'password' => Hash::make('ramiro'), 'admin' => true]);
     User::create(['name' => 'Mariano Petrucci' , 'email' => 'marianopetrucci@mariano.com'     , 'password' => Hash::make('mariano')]);
     User::create(['name' => 'Mabel Rimano'     , 'email' => 'mabelrimano@mabel.com'           , 'password' => Hash::make('mabel')]);
     User::create(['name' => 'Roberto Vegas'    , 'email' => 'robertovegas@roberto.com'        , 'password' => Hash::make('roberto')]);

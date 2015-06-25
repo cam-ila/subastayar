@@ -27,6 +27,9 @@
           <ul class="dropdown-menu" role="menu">
             <li>{!! link_to(route('user.offers.index', ["user" => Auth::user()->id]), 'Mis Ofertas') !!}</li>
             <li>{!! link_to(route('user.bids.index', ["user" => Auth::user()->id]), 'Mis Subastas') !!}</li>
+            @if(Auth::user()->admin)
+              @include('shared.partials.admin_menu')
+            @endif
             <li><a href="{{ url('/auth/logout') }}">Salir</a></li>
           </ul>
         </li>
