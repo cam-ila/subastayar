@@ -1,5 +1,5 @@
 $(function() {
-  $('.btn-destroy').on('click', function(event){
+  $('.btn-form-submit').on('click', function(event){
     event.preventDefault();
     if (confirm('Esta seguro que desea realizar esta accion?')){ $(this).closest('form').submit() }
   });

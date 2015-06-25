@@ -51,7 +51,7 @@ function destroy_link($resource)
     ]) .
     Form::input('hidden', '_method', 'DELETE') .
     Button::danger()->withIcon(Icon::trash())->submit()->withAttributes([
-      'class' => 'btn-destroy',
+      'class' => 'btn-form-submit',
       'title' => 'borrar',
       'data-toggle' => 'tooltip'
     ]) .
