@@ -29,6 +29,13 @@
             </div>
 
             <div class="form-group">
+              <label class="col-md-4 control-label">{{ trans('forms.last_name') }}</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-md-4 control-label">{{ trans('forms.email') }}</label>
               <div class="col-md-6">
                 <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>

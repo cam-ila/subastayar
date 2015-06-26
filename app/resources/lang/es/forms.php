@@ -4,6 +4,7 @@ return [
 
   'email'           => 'Direccion de E-mail',
   'name'            => 'Nombre',
+  'last_name'       => 'Apellido',
   'generic_trouble' => '<strong>PROBLEMAS!</strong> se encontro algun problema con sus datos.<br><br>',
   'password'        => 'Contraseña',
   'forgot_pass'     => 'Olvido su contraseña?',
