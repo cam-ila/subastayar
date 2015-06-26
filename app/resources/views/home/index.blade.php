@@ -10,7 +10,7 @@
 <div class="container">
   <div class="row">
     <div class="sort-actions">
-      <label for=""> Ordernar por:</label>
+      <label for=""> Ordenar por:</label>
       {!! Button::success('nombre')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'title', 'data-order' => 'desc']) !!}
       {!! Button::success('fecha')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'date', 'data-order' => 'desc']) !!}
       {!! Button::success('categoria')->withAttributes(['class' => 'js-sort-button', 'data-sortby' => 'category', 'data-order' => 'desc']) !!}
