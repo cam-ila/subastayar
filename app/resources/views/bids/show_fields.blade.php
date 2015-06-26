@@ -18,7 +18,7 @@
   <div class="row">
     @if($resource->sold() )
     <div class="alert alert-success" role="alert">
-      Este articulo ha sido vendido al usuario {{ $resource->sale->buyer() }}
+      Este articulo ha sido vendido al usuario {!! link_to(route('user.show', $resource->sale->buyer()), $resource->sale->buyer()) !!}
     </div>
     @else
       <h4>Ofertas:</h4>

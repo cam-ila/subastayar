@@ -12,7 +12,7 @@ class OfferTableSeeder extends Seeder {
   public function run()
   {
 
-    $ramiro = User::whereName('Ramiro Lamas')->firstOrFail();
+    $ramiro = User::whereName('Ramiro')->firstOrFail();
 
     Bid::whereTitle('Guantes de acero')->firstOrFail()->offers()->saveMany([
       new Offer([
@@ -22,21 +22,21 @@ class OfferTableSeeder extends Seeder {
       ]),
       new Offer([
         'body'    => 'Soy carpintero y la necesito para cuando manejo la sierra.',
-        'user_id' => User::whereName('Roberto Vegas')->firstOrFail()->id
+        'user_id' => User::whereName('Roberto')->firstOrFail()->id
       ])
     ]);
 
     Bid::whereTitle('Llama')->firstOrFail()->offers()->save(
       new Offer([
         'body'    => 'Siempre me gustaron los animales porque vivo solo y son buena compañia. Una llama es justo lo que necesito.',
-        'user_id' => User::whereName('Mariano Petrucci')->firstOrFail()->id
+        'user_id' => User::whereName('Mariano')->firstOrFail()->id
       ])
     );
 
     Bid::whereTitle('Kriptonita')->firstOrFail()->offers()->save(
       new Offer([
         'body'    => 'Odio a superman y si algún día lo llego a cruzar este producto me vendría al pelo.',
-        'user_id' => User::whereName('Mabel Rimano')->firstOrFail()->id
+        'user_id' => User::whereName('Mabel')->firstOrFail()->id
       ])
     );
 

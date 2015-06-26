@@ -43,8 +43,7 @@ function sold_to_message($sale)
 
 function offered_by_message($resource)
 {
-  $link = link_to(polymorphic_route($resource->bid, 'show'), $resource->bid);
-  return trans('models.offers.offered_by', ['buyer' => $resource->user, 'product' => $link]);
+  return 'Nueva oferta por el producto: ' . link_to(polymorphic_route($resource->bid, 'show'), $resource->bid);
 }
 
 function edit_link($resource)

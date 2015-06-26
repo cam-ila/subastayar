@@ -38,6 +38,7 @@ Route::resource('user.offers', 'UserOffersController');
 Route::resource('user.notifications', 'UserNotificationsController');
 Route::resource('user.bids', 'UserBidsController');
 
+Route::resource('user', 'UsersController');
 Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);
 Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'users.setAdmin']);
 

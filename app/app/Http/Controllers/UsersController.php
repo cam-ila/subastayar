@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
+
+  public function show(User $user)
+  {
+    return view('users.show', compact('user'));
+  }
+
   public function admin()
   {
     $users = User::whereAdmin(false)->lists('name', 'id');
@@ -25,4 +31,5 @@ class UsersController extends Controller
       return redirect()->back()->withError('No se pudo seleccionar este usuario como Administrador.');
     }
   }
+
 }

@@ -68,4 +68,14 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
   {
     return Notification::whereUserId($this->id)->whereSeen(false)->count();
   }
+
+  public function fullName()
+  {
+    return $this->name . ' ' . $this->last_name;
+  }
+
+  public function asString()
+  {
+    return $this->fullName();
+  }
 }
