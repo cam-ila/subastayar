@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Offer as Offer;
 use Illuminate\Http\Request;
 use App\Http\Requests\OfferRequest;
+use Illuminate\Support\Facades\Auth;
 
 class OffersController extends Controller {
 
@@ -15,7 +16,9 @@ class OffersController extends Controller {
   public function index(Request $request)
   {
     $query     = $request->input('query');
-    $resources = Offer::search($query)->get(['*']);
+    $resources = Offer::search($query);
+    if (!Auth::user()->admin) { $resources = $resources->whereUserId(Auth::user()->id); }
+    $resources = $resources->get(['*']);
     $model     = 'offer';
     return view('shared.index', compact('resources', 'model', 'query'));
   }
