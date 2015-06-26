@@ -203,6 +203,7 @@ return [
     'Offer'       => 'App\Models\Offer',
     'Sale'        => 'App\Models\Sale',
     'User'        => 'App\Models\User',
+    'Notification'=> 'App\Models\Notification',
 
   ],
 

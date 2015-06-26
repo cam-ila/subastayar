@@ -23,6 +23,6 @@
   </div>
   @endsection
 
-  @include('shared.partials.panel', ['title' => pluralize($model), 'search' => false])
+  @include('shared.partials.panel', ['title' => pluralize($model), 'search' => (isset($search) ? $search : false)])
 
 @endsection

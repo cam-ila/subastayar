@@ -24,7 +24,8 @@ class OffersController extends Controller {
   {
     $resource = new Offer($request->all());
     if (Offer::where('user_id', '=', $resource->user_id)->where('bid_id', '=', $resource->bid_id)->count() == 0 && $resource->save()){
-      return redirect(route('bids.show', $resource->bid))->withMessage("Oferta Creada.");
+      notify($resource->bid->user_id, offered_by_message($resource));
+      return redirect(route('home.show', $resource->bid))->withMessage("Oferta Creada.");
     } else {
       return redirect(route('home.show', $resource->bid))->withError('Ya ha ofertado por esta subasta')->with(compact('resource'));
     }

@@ -14,11 +14,11 @@ class UserBidsController extends Controller {
     $this->middleware('auth');
   }
 
-  public function index(Request $request, $id)
+  public function index(Request $request, User $user)
   {
     $query     = $request->input('query');
     $model     = 'bid';
-    $resources = Bid::where(['user_id' => $id])->get();
+    $resources = Bid::where(['user_id' => $user->id])->get();
     return view('shared.index', compact('resources', 'query', 'model'));
   }
 

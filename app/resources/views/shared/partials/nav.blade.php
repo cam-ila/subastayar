@@ -25,10 +25,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li>{!! link_to(route('user.offers.index', ["user" => Auth::user()->id]), 'Mis Ofertas') !!}</li>
-            <li>{!! link_to(route('user.bids.index', ["user" => Auth::user()->id]), 'Mis Subastas') !!}</li>
+            <li>{!! link_to(route('user.offers.index', ['user' => Auth::user()->id]), 'Mis Ofertas') !!}</li>
+            <li>{!! link_to(route('user.bids.index', ['user' => Auth::user()->id]), 'Mis Subastas') !!}</li>
+            <li>
+              <a href="{{ route('user.notifications.index', ['user' => Auth::user()->id]) }}">
+              Notificaciones <span class="label label-danger">{!! Auth::user()->notificationCount() !!}</span>
+              </a>
+            </li>
             @if(Auth::user()->admin)
+              <li class="divider"></li>
               @include('shared.partials.admin_menu')
+              <li class="divider"></li>
             @endif
             <li><a href="{{ url('/auth/logout') }}">Salir</a></li>
           </ul>

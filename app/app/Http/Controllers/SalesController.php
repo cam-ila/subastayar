@@ -22,30 +22,22 @@ class SalesController extends Controller {
   {
     $sale = new Sale($request->all());
     if ($sale->save()) {
-      return redirect()->back()->withMessage('se ha registrado la oferta ganadora');
+      $sale->bid->deactivate();
+      notify($sale->buyer()->id, sold_to_message($sale));
+      return redirect()->back()->withMessage('Se ha registrado la oferta ganadora');
     } else {
-      return redirect()->back()->withError('no se pudo seleccionar la oferta como ganadora');
+      return redirect()->back()->withError('No se pudo seleccionar la oferta como ganadora');
     }
   }
 
-  public function show($id)
+
+  public function pay(Request $request, Sale $sale)
   {
-    //
+    return view('sales.pay', compact('sale'));
   }
 
-  public function edit($id)
+  public function registerPay(Request $request, Sale $sale)
   {
-    //
+    return redirect(route('home'))->withMessage('Se ha registrado su pago.');
   }
-
-  public function update($id)
-  {
-    //
-  }
-
-  public function destroy($id)
-  {
-    //
-  }
-
 }

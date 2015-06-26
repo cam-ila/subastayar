@@ -44,6 +44,11 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     return $this->hasMany('App\Models\Offer');
   }
 
+  public function notifications()
+  {
+    return $this->hasMany('App\Models\Notification');
+  }
+
   public function canEdit($resource)
   {
     return $resource->user == $this;
@@ -57,5 +62,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
   public function hasOffersFor($bid)
   {
     return (Offer::where(['user_id' => $this->id, 'bid_id' => $bid->id])->count()) >= 1;
+  }
+
+  public function notificationCount()
+  {
+    return Notification::whereUserId($this->id)->whereSeen(false)->count();
   }
 }

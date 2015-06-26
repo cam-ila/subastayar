@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Lang;
+use App\Models\Notification as Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,19 +36,30 @@ function offer_link($resource)
     ->asLinkTo(route('bids.offer.create', ['bid' => $resource]));
 }
 
+function sold_to_message($sale)
+{
+  return trans('models.offers.winner', ['product' => $sale->bid, 'link' => link_to(route('sales.pay', $sale->id), 'aqui')]);
+}
+
+function offered_by_message($resource)
+{
+  $link = link_to(polymorphic_route($resource->bid, 'show'), $resource->bid);
+  return trans('models.offers.offered_by', ['buyer' => $resource->user, 'product' => $link]);
+}
+
 function edit_link($resource)
 {
   return Button::normal()->withIcon(Icon::pencil())->withAttributes([
-    'title' => 'editar', 
+    'title' => 'editar',
     'data-toggle' => 'tooltip'
   ])->asLinkTo(polymorphic_edit_route($resource));
 }
 
-function destroy_link($resource)
+function destroy_link($resource, $url = null)
 {
   return Form::open([
-    'url'   => polymorphic_route($resource, 'destroy'),
-      'class' => 'destroy-link'
+    'url'   => (isset($url) ? $url : polymorphic_route($resource, 'destroy')),
+    'class' => 'destroy-link'
     ]) .
     Form::input('hidden', '_method', 'DELETE') .
     Button::danger()->withIcon(Icon::trash())->submit()->withAttributes([
@@ -58,16 +70,16 @@ function destroy_link($resource)
     Form::close();
 }
 
-function create_link($model)
+function create_link($model, $url = null)
 {
   return Button::success(trans('crud.titles.create', ['model' => translate($model)]))
-    ->asLinkTo(route(str_plural($model) . '.create'));
+    ->asLinkTo(route((isset($url) ? $url : str_plural($model) . '.create')));
 }
 
-function show_link($resource)
+function show_link($resource, $url = null)
 {
   return Button::primary()->withAttributes(['title' => 'ver', 'data-toggle' => 'tooltip'])
-    ->withIcon(Icon::eye_open())->asLinkTo(polymorphic_route($resource, 'show'));
+    ->withIcon(Icon::eye_open())->asLinkTo((isset($url) ? $url : polymorphic_route($resource, 'show')));
 }
 
 function too_long($string)
@@ -127,3 +139,16 @@ function polymorphic_edit_route($resource)
   return polymorphic_route($resource, 'edit');
 }
 
+/*
+|--------------------------------------------------------------------------
+| Notification Helpers
+|--------------------------------------------------------------------------
+ */
+
+function notify($user_id, $message)
+{
+  return (new Notification([
+    'user_id' => $user_id,
+    'message' => $message
+  ]))->save();
+}

@@ -1,5 +1,5 @@
 {!! Form::open([
-	'url' => (isset($url) ? $url : route(str_plural($model).'.index')),
+  'url'   => (isset($url) ? $url : route(str_plural($model).'.index')),
  'method' => 'GET',
   'class' => (isset($navbar) ? 'navbar-form navbar-left' : 'panel-form'),
    'role' => 'search']) !!}

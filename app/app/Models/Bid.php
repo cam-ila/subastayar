@@ -54,4 +54,9 @@ class Bid extends Base {
   {
     return $this->expired() && $this->sale != null;
   }
+
+  public function deactivate()
+  {
+    $this->update(['active' => false]);
+  }
 }

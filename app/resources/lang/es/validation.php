@@ -91,7 +91,7 @@ return [
     |
     */
 
-  'attributes' => [
+  'attributes'    => [
     'name'        => 'nombre',
     'created_at'  => 'fecha de creacion',
     'description' => 'descripcion',
@@ -101,6 +101,7 @@ return [
     'body'        => 'cuerpo',
     'bid'         => 'subasta',
     'prize'       => 'precio',
+    'message'     => 'mensaje',
   ]
 
 ];

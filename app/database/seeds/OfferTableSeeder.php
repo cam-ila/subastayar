@@ -17,6 +17,7 @@ class OfferTableSeeder extends Seeder {
     Bid::whereTitle('Guantes de acero')->firstOrFail()->offers()->saveMany([
       new Offer([
         'body'    => 'Soy carnicero y lamentablemente perdí un dedo trabajando. Me gustaría comprar el producto para que no me vuelva a ocurrir.',
+        'prize'   => 99,
         'user_id' => $ramiro->id
       ]),
       new Offer([
