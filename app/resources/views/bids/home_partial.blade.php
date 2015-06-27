@@ -16,7 +16,7 @@
      <div class="actions">
        @if(Auth::user())
        <hr>
-         @if(Auth::user()->canOffer($bid))
+         @if(Auth::user()->canOffer($bid) && ! $bid->expired())
            {!! offer_link($bid) !!}
          @endif
          @if($bid->user == Auth::user())
