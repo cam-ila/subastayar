@@ -6267,6 +6267,9 @@ form.destroy-link {
   max-width: 600px;
 }
 
+.index-bid-container {
+  min-height: 500px;
+}
 .index-bid-container img {
   max-height: 240px;
 }

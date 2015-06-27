@@ -10,7 +10,20 @@
        </a>
      </div>
      <hr>
+     <div class="title">
+       <strong>Titulo:</strong>
+       {{ $bid->title }}
+     </div>
+     <div class="date">
+       <strong>Fecha de creacion:</strong>
+       {{ $resource->created_at->toFormattedDateString() }}
+     </div>
+     <div class="category">
+       <strong>Categoria:</strong>
+       {{ $bid->category }}
+     </div>
      <div class="description">
+       <strong>Descripcion:</strong>
        {{ $bid->description }}
      </div>
      <div class="actions">
