@@ -39,7 +39,7 @@ class CategoriesController extends Controller {
 
   public function update(Category $category, CategoryRequest $request)
   {
-    $category->update(['name' => $request->all()]);
+    $category->update($request->all());
     return redirect(route('categories.show', $category));
   }
 
