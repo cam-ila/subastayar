@@ -23,8 +23,11 @@ class CategoriesController extends Controller {
 
   public function store(CategoryRequest $request)
   {
-    Category::create(['name' => $request->input('name')]);
-    return redirect('categories');
+    if (Category::create($request->all())) {
+      return redirect('categories')->withMessage('Se ha creado la categoria ' . $request->get('name'));
+    } else {
+      return redirect('categories')->withError('No se pudo crear la categoria.');
+    }
   }
 
   public function show(Category $resource)
@@ -39,8 +42,11 @@ class CategoriesController extends Controller {
 
   public function update(Category $category, CategoryRequest $request)
   {
-    $category->update($request->all());
-    return redirect(route('categories.show', $category));
+    if ($category->update($request->all())) {
+      return redirect(route('categories.show', $category))->withMessage('Se ha actualizado la categoria ' . $category->name);
+    } else {
+      return redirect(route('categories.show', $category))->withError('No se pudo actualizar la categoria.');
+    }
   }
 
   public function destroy(Category $category)
