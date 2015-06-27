@@ -9,6 +9,7 @@ class Bid extends Base {
   protected $table     = 'bids';
   protected $fillable  = ['title', 'description', 'user_id', 'category_id', 'image'];
   protected $visible   = ['title', 'description', 'category'];
+  protected $dates     = ['created_at', 'updated_at', 'expires_at'];
 
   public function user()
   {
@@ -57,6 +58,18 @@ class Bid extends Base {
 
   public function deactivate()
   {
-    $this->update(['active' => false]);
+    $this->active = false;
+    return $this->save();
+  }
+
+  public function expire($days)
+  {
+    $this->expires_at = $this->created_at->addDays(intval($days));
+    return $this->save();
+  }
+
+  public function diffToExpiresAt()
+  {
+    return $this->created_at->diffInDays($this->expires_at);
   }
 }

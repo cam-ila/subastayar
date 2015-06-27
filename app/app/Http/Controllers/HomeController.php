@@ -9,7 +9,7 @@ class HomeController extends Controller {
   public function index(Request $request)
   {
     $query     = $request->input('query');
-    $resources = Bid::search($query)->get(['*']);
+    $resources = Bid::search($query)->whereActive(true)->get(['*']);
     $model     = 'bid';
     return view('home.index', compact('resources', 'model', 'query'));
   }

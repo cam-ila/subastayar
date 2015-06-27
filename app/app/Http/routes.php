@@ -11,6 +11,8 @@
 |
 */
 
+Carbon\Carbon::setLocale('es');
+
 Route::model('user', 'App\Models\User');
 Route::model('sale', 'App\Models\Sale');
 Route::model('categories', 'App\Models\Category');

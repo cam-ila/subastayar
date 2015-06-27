@@ -8,6 +8,7 @@ use App\Models\User as User;
 use Illuminate\Http\Request;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon as Carbon;
 
 class BidsController extends Controller {
 
@@ -34,10 +35,12 @@ class BidsController extends Controller {
 
   public function store(BidRequest $request)
   {
-    $bid = new Bid($request->except(['image']));
+    $bid = new Bid($request->except(['image', 'expires_at']));
     $this->setImage($bid, $request->file('image'));
-    $bid->save();
-    return redirect(polymorphic_route($bid, 'show'));
+    if ($bid->save()) {
+      $bid->expire($request->get('expires_at'));
+      return redirect(polymorphic_route($bid, 'show'))->withMessage('Se ha creado la subasta.');
+    }
   }
 
   public function show(Bid $resource)
@@ -60,9 +63,12 @@ class BidsController extends Controller {
 
   public function update(Bid $bid, BidRequest $request)
   {
-    if ($resource->user == Auth::user()) {
+    if ($bid->user == Auth::user()) {
       $this->setImage($bid, $request->file('image'));
       $bid->update($request->except(['image']));
+      if (! empty($request->get('days_to_expiration'))){
+        $bid->expires_at = $bid->created_at->addDays($request->get('days_to_expiration'));
+      }
       $bid->save();
       return redirect(route('bids.show', $bid));
     } else {

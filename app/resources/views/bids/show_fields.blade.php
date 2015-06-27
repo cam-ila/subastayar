@@ -2,6 +2,7 @@
 
   <div class="row">
     <h4>{{ $resource }}</h4>
+    <h5>Fecha de finalizacion: {{ $resource->expires_at->diffForHumans() }}</h5>
     <div class="col-md-12">
       @include('bids.home_partial', ['bid' => $resource])
     </div>

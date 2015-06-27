@@ -17,7 +17,7 @@
 
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
   <label for="category" data-toggle="tooltip" title="Cantidad de dias a mantener la subasta abierta.">Duracion de la subasta:</label>
-  {!! Form::selectRange('days_to_expiration', 1, 15, 1, ['class' => 'form-control', 'id' => 'category', 'required' => true]) !!}
+  {!! Form::selectRange('days_to_expiration', 15, 30, ($resource->created_at == null ? 15 : $resource->diffToExpiresAt()), ['class' => 'form-control', 'id' => 'category', 'required' => true]) !!}
 </div>
 
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
