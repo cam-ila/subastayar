@@ -36,8 +36,12 @@ class OffersController extends Controller {
 
   public function destroy(Offer $offer)
   {
-    $offer->delete();
-    return redirect()->back();
+    if ($offer->bid->expired()) {
+      return redirect()->back()->withError('No se puede eliminar esta oferta, la subasta ya ha finalizado.');
+    } else {
+      $offer->delete();
+      return redirect()->back()->withMessage('La oferta se ha eliminado correctamente.');
+    }
   }
 
   public function edit(Offer $resource)

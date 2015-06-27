@@ -81,7 +81,7 @@ class BidsController extends Controller {
     if ($bid->offers->count() == 0) {
       $filesystem->delete($bid->imagePath() . $bid->image);
       $bid->delete();
-      return redirect()->back()->withMessage('La subasta fue eliminada exitosamente.');
+      return redirect(route('home'))->withMessage('La subasta fue eliminada exitosamente.');
     } else {
       return redirect()->back()->withError('La subasta ya tiene ofertas.');
     }

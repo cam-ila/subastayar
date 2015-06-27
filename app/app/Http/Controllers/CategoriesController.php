@@ -64,7 +64,8 @@ class CategoriesController extends Controller {
 
   public function destroy(Category $category)
   {
-    if ($category->delete()) {
+    if ($category->bids->count() == 0) {
+      $category->delete();
       return redirect('categories')->withMessage('Se ha eliminado la categoria.');
     } else {
       return redirect(route('categories.show', $category))->withError('No se pudo eliminar la categoria.');

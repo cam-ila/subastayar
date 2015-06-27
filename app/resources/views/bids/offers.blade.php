@@ -6,7 +6,7 @@
     {!! Form::open(['url' => route('sales.store'), 'class' => 'form-inline']) !!}
     {!! Form::hidden('offer_id', $offer->id) !!}
     {!! Form::hidden('bid_id', $bid->id) !!}
-    {!! Button::submit()->success()->withIcon(Icon::check())->withAttributes(['class' => 'btn-form-submit', 'data-toggle' => 'tooltip', 'title' => 'Seleccionar oferta como ganadora.']) !!}
+    {!! Button::submit()->success()->withIcon(Icon::star())->withAttributes(['class' => 'btn-form-submit', 'data-toggle' => 'tooltip', 'title' => 'Seleccionar oferta como ganadora.']) !!}
     {!! Form::close() !!}
     @endif
     <strong>Dijo:</strong> {!! $offer->body !!} 

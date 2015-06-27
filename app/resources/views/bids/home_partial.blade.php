@@ -18,6 +18,10 @@
        <strong>Fecha de creacion:</strong>
        {{ $resource->created_at->toFormattedDateString() }}
      </div>
+     <div class="end_date">
+       <strong>Fecha de finalizacion:</strong>
+       {{ $resource->created_at->toFormattedDateString() }}
+     </div>
      <div class="category">
        <strong>Categoria:</strong>
        {{ $bid->category }}
