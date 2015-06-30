@@ -24,6 +24,7 @@ class BidTableSeeder extends Seeder {
         'description' => 'Guante de malla de acero inox. tejido, anticorte, marca *manulatex* de industria francesa',
         'category_id' => $ropa->id,
         'image'       => 'guante.jpg',
+        'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
       ]),
       new Bid([
@@ -41,6 +42,7 @@ class BidTableSeeder extends Seeder {
         'description' => 'Llama adulta oriunda de Tilcara. Es mansita',
         'category_id' => $animales->id,
         'image'       => 'llama.jpg',
+        'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
       ]),
     ]);
@@ -51,6 +53,7 @@ class BidTableSeeder extends Seeder {
         'description' => '200 gramos de Kriptonita',
         'category_id' => $otros->id,
         'image'       => 'kriptonita.jpg',
+        'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
       ])
     ]);
@@ -61,6 +64,7 @@ class BidTableSeeder extends Seeder {
         'description' => '200ml de aceite y 300ml de vinagre. No incluye fascos',
         'category_id' => $alimentos->id,
         'image'       => 'aceite.jpg',
+        'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
       ])
     ]);

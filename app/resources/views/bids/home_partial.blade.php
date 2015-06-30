@@ -20,7 +20,7 @@
      </div>
      <div class="end_date">
        <strong>Fecha de finalizacion:</strong>
-       {{ $resource->created_at->toFormattedDateString() }}
+       {{ $resource->expires_at->toFormattedDateString() }}
      </div>
      <div class="category">
        <strong>Categoria:</strong>
