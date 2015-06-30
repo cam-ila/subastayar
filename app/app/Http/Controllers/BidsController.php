@@ -55,7 +55,10 @@ class BidsController extends Controller {
   public function edit(Bid $resource)
   {
     if ($resource->user == Auth::user()) {
-      return view('shared.edit', compact('resource'));
+      if ($resource->comments->count() == 0) {
+        return view('shared.edit', compact('resource'));
+      }
+      return redirect()->back()->withError('Esta subasta no puede ser editada, ya posee comentarios.');
     } else {
       return redirect()->back()->withError('Esta subasta no le pertenece.');
     }
