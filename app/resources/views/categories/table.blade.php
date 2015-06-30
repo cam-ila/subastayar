@@ -23,7 +23,6 @@
       @endforeach
       <td data-sort-value="{{ $resource->created_at }}">{{ nice_date($resource->created_at) }}</td>
       <td>
-        {!! show_link($resource) !!}
         {!! edit_link($resource) !!}
         {!! destroy_link($resource) !!}
       </td>
