@@ -14,9 +14,8 @@ class HomeController extends Controller {
     return view('home.index', compact('resources', 'model', 'query'));
   }
 
-  public function show($id)
+  public function show(Bid $resource)
   {
-    $resource = Bid::find($id);
     return view('home.bid', compact('resource'));
   }
 

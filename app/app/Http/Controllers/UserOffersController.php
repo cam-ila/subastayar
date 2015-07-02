@@ -18,7 +18,7 @@ class UserOffersController extends Controller {
   {
     $query     = $request->input('query');
     $model     = 'offer';
-    $resources = Offer::where(['user_id' => $user->id])->get();
+    $resources = $user->offers;
     return view('shared.index', compact('resources', 'query', 'model'));
   }
 

@@ -25,7 +25,7 @@ class BidTableSeeder extends Seeder {
         'category_id' => $ropa->id,
         'image'       => 'guante.jpg',
         'created_at'  => Carbon::now()->subDays(2),
-        'expires_at'  => Carbon::yesterday(),
+        'expires_at'  => Carbon::now()->addDays(3),
       ]),
       new Bid([
         'title'       => 'Espejo',
@@ -44,6 +44,7 @@ class BidTableSeeder extends Seeder {
         'image'       => 'llama.jpg',
         'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
+        'active'      => false,
       ]),
     ]);
 
@@ -55,6 +56,7 @@ class BidTableSeeder extends Seeder {
         'image'       => 'kriptonita.jpg',
         'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
+        'active'      => false,
       ])
     ]);
 
@@ -66,6 +68,7 @@ class BidTableSeeder extends Seeder {
         'image'       => 'aceite.jpg',
         'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
+        'active'      => false,
       ])
     ]);
   }
