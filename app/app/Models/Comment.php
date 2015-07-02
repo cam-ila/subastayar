@@ -18,4 +18,9 @@ class Comment extends Base {
     return $this->belongsTo('App\Models\Bid');
   }
 
+  public function answered()
+  {
+    return ! empty($this->response);
+  }
+
 }

@@ -2,6 +2,9 @@
   @foreach($bid->comments as $comment)
   <div class="comment">
     {!! MediaObject::withContents(mediaObjectOptions($comment)) !!}
+    @if($comment->user == Auth::user() && ! $comment->answered())
+    {!! destroy_link($comment, route('bids.comments.destroy', ['bid_id' => $resource->id, 'comment_id' => $comment->id])) !!}
+    @endif
   </div>
   @endforeach
 @else
