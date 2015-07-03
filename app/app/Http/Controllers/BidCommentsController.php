@@ -47,11 +47,23 @@ class BidCommentsController extends Controller
   public function edit($id)
   {
     //
+
   }
 
-  public function update($id)
+  public function update(Bid $bid, Comment $comment, Request $request)
   {
-    //
+    if ($bid->user == Auth::user() )  {
+      if ( $comment->answered() ) {
+        return redirect()->back()->withError('Comentario ya tenia respuesta.');
+      }
+      else {
+        $comment->response = $request->get('response');
+        $comment->save();
+        return redirect()->back()->withMessage('Comentario respondido');
+      }
+    } else {
+      return redirect()->back()->withError('Comentario no le pertenece, no puede responderlo.');
+    }
   }
 
   public function destroy(Bid $bid, Comment $comment)
