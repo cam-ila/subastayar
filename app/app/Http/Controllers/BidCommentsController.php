@@ -54,8 +54,31 @@ class BidCommentsController extends Controller
     //
   }
 
-  public function destroy($id)
+  public function destroy(Bid $bid, Comment $comment)
   {
-    //
+    if ($comment->user == Auth::user() )  {
+      if ( $comment->answered() ) {
+        return redirect()->back()->withError('Comentario no eliminado porque tiene respuesta.');      
+      }
+      else { 
+        $comment->delete();
+        return redirect()->back()->withMessage('Comentario eliminado satisfactoriamente.');
+      }
+    } else {
+      return redirect()->back()->withError('Comentario no le pertenece.');    
+    }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
