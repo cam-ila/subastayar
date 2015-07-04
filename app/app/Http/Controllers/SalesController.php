@@ -40,4 +40,19 @@ class SalesController extends Controller {
   {
     return redirect(route('home'))->withMessage('Se ha registrado su pago.');
   }
+
+  public function betweenDates(Request $request)
+  {
+    if ( $request->get('start_date') && $request->get('end_date') ) {
+      
+    return Sale::whereBetween('created_at', [$request->get('start_date') , $request->get('end_date') ])->get()->toArray() ;
+
+    }
+   else {
+    
+    return view('statistics.list'); }
+
+  }
+
+
 }
