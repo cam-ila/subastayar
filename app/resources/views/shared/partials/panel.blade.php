@@ -17,8 +17,10 @@
         <div class="panel-body">
           @yield('panel_body')
         </div>
+        <div class="panel-footer">
+        @yield('panel_actions')
+        </div>
       </div>
-      @yield('panel_actions')
     </div>
   </div>
 </div>

@@ -16,12 +16,14 @@
   </div>
   @endsection
 
+  @if(Auth::user() == $user)
   @section('panel_actions')
-    {!! link_to(route('users.edit', Auth::user()), 'Editar mi perfil', ['class' => 'btn btn-primary']) !!}
+    {!! link_to(route('users.edit', $user->id), 'Editar mi perfil', ['class' => 'btn btn-primary']) !!}
     {!! Form::open(['url' => route('users.destroy', Auth::user()->id), 'class' => 'destroy-link', 'method' => 'DELETE' ]) !!}
     {!! Button::danger(trans('crud.users.soft_delete'))->withAttributes(['class' => 'btn-form-submit']) !!}
     {!! Form::close() !!}
   @endsection
+  @endif
 
   @include('shared.partials.panel', [
     'title'  => 'Perfil de usuario',

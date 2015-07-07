@@ -16,11 +16,9 @@
   @endsection
 
   @section('panel_actions')
-  <div class="pull-right">
     @if($model != 'offer')
       {!! create_link($model) !!}
     @endif
-  </div>
   @endsection
 
   @include('shared.partials.panel', ['title' => pluralize($model), 'search' => (isset($search) ? $search : false)])

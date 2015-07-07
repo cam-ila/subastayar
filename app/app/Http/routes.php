@@ -43,6 +43,9 @@ Route::resource('user.offers', 'UserOffersController');
 Route::resource('user.notifications', 'UserNotificationsController');
 Route::resource('user.bids', 'UserBidsController');
 
+Route::get('/sales/statistics', ['uses' => 'SalesController@statistics', 'as' => 'sales.statistics']);
+Route::get('/users/statistics', ['uses' => 'UsersController@statistics', 'as' => 'users.statistics']);
+
 Route::resource('users', 'UsersController');
 
 Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);

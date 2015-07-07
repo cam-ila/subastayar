@@ -19,6 +19,10 @@ return [
     'winner' => 'Tu oferta por el articulo :product ha sido seleccionada ganadora. Puedes pagarla :link .'
   ],
 
+  'users' => [
+    'between' => 'Estadisticas de usuarios registrados entre dos fechas'
+  ]
+
 ];
 
 
