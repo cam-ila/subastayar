@@ -57,6 +57,10 @@ Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'user
 Route::get('/users/restore', ['uses' => 'HomeController@getRestore', 'as' => 'users.get_restore']);
 Route::post('/users/restore', ['uses' => 'HomeController@postRestore', 'as' => 'users.post_restore']);
 
+Route::get('/contacto', ['uses' => 'HomeController@contact', 'as' => 'home.contact']);
+Route::post('/thanks', ['uses' => 'HomeController@thanks', 'as' => 'home.thanks']);
+Route::get('/ayuda', ['uses' => 'HomeController@help', 'as' => 'home.help']);
+
 Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',

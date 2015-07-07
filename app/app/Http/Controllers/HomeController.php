@@ -43,4 +43,18 @@ class HomeController extends Controller {
     }
   }
 
+  public function contact()
+  {
+    return view('home.contact');
+  }
+
+  public function thanks()
+  {
+    return redirect(route('home'))->withMessage('Se ha registrado su mail. Gracias por comunicarse.');
+  }
+
+  public function help()
+  {
+    return view('home.help');
+  }
 }

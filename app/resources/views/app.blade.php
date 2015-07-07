@@ -26,7 +26,17 @@
       @include('shared.partials.flashes')
 
       @yield('content')
+
     </div>
+    <footer class="footer">
+      <nav>
+        {!! link_to(route('home.contact'), 'Contacto', ['class' => 'footer-link']) !!}
+        |
+        {!! link_to(route('home.help'), 'Ayuda', ['class' => 'footer-link']) !!}
+        |
+      <a>Copyright 2015 Bestnid</a>
+      </nav>
+    </footer>
 
     <!-- Scripts -->
 
