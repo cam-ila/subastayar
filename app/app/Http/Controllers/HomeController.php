@@ -27,4 +27,20 @@ class HomeController extends Controller {
     return view('home.index', compact('resources', 'query', 'model', 'category_id'));
   }
 
+  public function getRestore()
+  {
+    return view('users.restore');
+  }
+
+  public function postRestore(Request $request)
+  {
+    $user = User::onlyTrashed()->whereEmail($request->get('email'))->first();
+    if ($user) {
+      $user->restore();
+      return redirect(url('auth/login'))->withMessage(trans('forms.login_email_sent'));
+    } else {
+      return redirect()->back()->withError(trans('forms.user_not_found'));
+    }
+  }
+
 }

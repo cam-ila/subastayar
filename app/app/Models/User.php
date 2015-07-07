@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
-  use Authenticatable, CanResetPassword;
+  use Authenticatable, CanResetPassword, SoftDeletes;
 
   protected $main_attr = 'name';
   /**
@@ -33,6 +34,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
    * @var array
    */
   protected $hidden = ['password', 'remember_token'];
+  protected $dats   = ['deleted_at'];
 
   public function bids()
   {

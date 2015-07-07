@@ -11,5 +11,8 @@ return [
     'show'    => 'ver',
     'edit'    => 'editar',
     'destroy' => 'borrar'
-  ]
+  ],
+  'users' => [
+    'soft_delete' => 'Dar de baja mi cuenta.'
+  ],
 ];

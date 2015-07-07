@@ -25,7 +25,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li>{!! link_to(route('user.show', Auth::user()->id), 'Mi Perfil') !!}</li>
+            <li>{!! link_to(route('users.show', Auth::user()->id), 'Mi Perfil') !!}</li>
             <li>{!! link_to(route('user.offers.index', ['user' => Auth::user()->id]), 'Mis Ofertas') !!}</li>
             <li>{!! link_to(route('user.bids.index', ['user' => Auth::user()->id]), 'Mis Subastas') !!}</li>
             <li>

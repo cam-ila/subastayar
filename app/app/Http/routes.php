@@ -13,7 +13,7 @@
 
 Carbon\Carbon::setLocale('es');
 
-Route::model('user', 'App\Models\User');
+Route::model('users', 'App\Models\User');
 Route::model('sale', 'App\Models\Sale');
 Route::model('categories', 'App\Models\Category');
 Route::model('bids', 'App\Models\Bid');
@@ -42,9 +42,13 @@ Route::resource('user.offers', 'UserOffersController');
 Route::resource('user.notifications', 'UserNotificationsController');
 Route::resource('user.bids', 'UserBidsController');
 
-Route::resource('user', 'UsersController');
+Route::resource('users', 'UsersController');
+
 Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);
 Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'users.setAdmin']);
+
+Route::get('/users/restore', ['uses' => 'HomeController@getRestore', 'as' => 'users.get_restore']);
+Route::post('/users/restore', ['uses' => 'HomeController@postRestore', 'as' => 'users.post_restore']);
 
 Route::controllers([
   'auth'     => 'Auth\AuthController',

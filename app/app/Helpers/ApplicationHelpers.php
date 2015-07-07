@@ -46,21 +46,21 @@ function offered_by_message($resource)
   return 'Nueva oferta por el producto: ' . link_to(polymorphic_route($resource->bid, 'show'), $resource->bid);
 }
 
-function edit_link($resource)
+function edit_link($resource, $url = null)
 {
   return Button::normal()->withIcon(Icon::pencil())->withAttributes([
     'title' => 'editar',
     'data-toggle' => 'tooltip'
-  ])->asLinkTo(polymorphic_edit_route($resource));
+  ])->asLinkTo((isset($url) ? $url : polymorphic_route($resource, 'edit')));
 }
 
 function destroy_link($resource, $url = null)
 {
   return Form::open([
-    'url'   => (isset($url) ? $url : polymorphic_route($resource, 'destroy')),
-    'class' => 'destroy-link'
+    'url'    => (isset($url) ? $url : polymorphic_route($resource, 'destroy')),
+    'class'  => 'destroy-link',
+    'method' => 'DELETE'
     ]) .
-    Form::input('hidden', '_method', 'DELETE') .
     Button::danger()->withIcon(Icon::trash())->submit()->withAttributes([
       'class' => 'btn-form-submit',
       'title' => 'borrar',

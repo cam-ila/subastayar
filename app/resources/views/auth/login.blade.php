@@ -47,13 +47,17 @@
           <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
               <button type="submit" class="btn btn-primary">{{ trans('forms.login_submit') }}</button>
-
-              <a class="btn btn-link" href="{{ url('/password/email') }}">{{ trans('forms.forgot_pass') }}</a>
             </div>
           </div>
         </form>
+
+        <div class="actions">
+          <span class="alert alert-info col-md-12">
+            ¿Dio de baja su cuenta? Puede recuperarla{!! link_to(route('users.get_restore'), 'aqui', ['class' => 'btn btn-link']) !!}
+          </span>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</div> <!-- end row -->
 @endsection

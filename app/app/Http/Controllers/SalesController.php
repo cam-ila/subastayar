@@ -30,7 +30,6 @@ class SalesController extends Controller {
     }
   }
 
-
   public function pay(Request $request, Sale $sale)
   {
     return view('sales.pay', compact('sale'));

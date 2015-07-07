@@ -61,4 +61,9 @@ class AuthController extends Controller {
       'password'  => bcrypt($data['password']),
     ]);
   }
+
+  protected function getFailedLoginMessage()
+  {
+    return 'No se han encontrado las credenciales utilizadas.';
+  }
 }
