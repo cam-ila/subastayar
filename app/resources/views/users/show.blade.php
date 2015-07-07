@@ -17,8 +17,8 @@
   @endsection
 
   @section('panel_actions')
-    {!! link_to(route('user.edit', Auth::user()), 'Editar mi perfil', ['class' => 'btn btn-primary']) !!}
-    {!! Form::open(['url' => route('user.destroy', Auth::user()->id), 'class' => 'destroy-link', 'method' => 'DELETE' ]) !!}
+    {!! link_to(route('users.edit', Auth::user()), 'Editar mi perfil', ['class' => 'btn btn-primary']) !!}
+    {!! Form::open(['url' => route('users.destroy', Auth::user()->id), 'class' => 'destroy-link', 'method' => 'DELETE' ]) !!}
     {!! Button::danger(trans('crud.users.soft_delete'))->withAttributes(['class' => 'btn-form-submit']) !!}
     {!! Form::close() !!}
   @endsection
