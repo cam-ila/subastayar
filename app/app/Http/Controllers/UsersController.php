@@ -60,6 +60,13 @@ class UsersController extends Controller
   public function statistics(Request $request)
   {
     if (Auth::user()->admin) {
+      return view('users.statistics', compact('resources'));
+    } else {
+      return redirect(route('home'))->withError('No tiene permisos suficientes para realizar esta accion.');
+    }
+  }
+  public function results(Request $request)
+  {
       $resources  = new Collection;
       $start_date = $request->get('start_date');
       $end_date   = $request->get('end_date');
@@ -68,9 +75,6 @@ class UsersController extends Controller
         $upto   = Carbon::createFromFormat('Y-m-d', $end_date);
         $resources  = User::whereBetween('created_at', [$from, $upto])->get() ;
       }
-      return view('users.list', compact('resources', 'start_date', 'end_date'));
-    } else {
-      return redirect(route('home'))->withError('No tiene permisos suficientes para realizar esta accion.');
-    }
+      return view('users.results', compact('resources', 'start_date', 'end_date'));
   }
 }

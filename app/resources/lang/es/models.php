@@ -21,6 +21,10 @@ return [
 
   'users' => [
     'between' => 'Estadisticas de usuarios registrados entre dos fechas'
+  ],
+
+  'sales' => [
+    'between' => 'Estadisticas de ventas registradas entre dos fechas'
   ]
 
 ];

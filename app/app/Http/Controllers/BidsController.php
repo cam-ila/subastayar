@@ -45,7 +45,7 @@ class BidsController extends Controller {
 
   public function show(Bid $resource)
   {
-    if ($resource->user == Auth::user()) {
+    if ($resource->user == Auth::user() || Auth::user()->admin) {
       return view('shared.show', compact('resource'));
     } else {
       return redirect(route('home'))->withError('Esta subasta no le pertenece.');

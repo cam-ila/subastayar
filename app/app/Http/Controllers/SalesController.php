@@ -6,6 +6,8 @@ use App\Models\Sale as Sale;
 use App\Models\Offer as Offer;
 use Illuminate\Http\Request;
 use Carbon\Carbon as Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 
 class SalesController extends Controller {
 
@@ -48,8 +50,28 @@ class SalesController extends Controller {
     } else {
     return view('statistics.list'); }
   }
-  public function statistics()
+
+  public function statistics(Request $request)
   {
-    return 'slalalal';
+    if (Auth::user()->admin) {
+      return view('sales.statistics', compact('resources', 'start_date', 'end_date'));
+    } else {
+      return redirect(route('home'))->withError('No tiene permisos suficientes para realizar esta accion.');
+    }
+  }
+
+  public function results(Request $request)
+  {
+    $resources  = new Collection;
+    $start_date = $request->get('start_date');
+    $end_date   = $request->get('end_date');
+
+    if ($start_date && $end_date) {
+      $from      = Carbon::createFromFormat('Y-m-d', $start_date);
+      $upto      = Carbon::createFromFormat('Y-m-d', $end_date);
+      $resources = Sale::whereBetween('created_at', [$from, $upto])->get() ;
+    }
+
+    return view('sales.results', compact('resources', 'start_date', 'end_date'));
   }
 }
