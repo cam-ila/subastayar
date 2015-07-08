@@ -52,6 +52,7 @@ class UsersController extends Controller
 
   public function destroy(User $user)
   {
+    //TODO: deshabilitar las subatas del man
     $user->delete();
     Auth::logout();
     return redirect(route('home'))->withMessage('Se ha dado de baja su cuenta.');
@@ -65,6 +66,7 @@ class UsersController extends Controller
       return redirect(route('home'))->withError('No tiene permisos suficientes para realizar esta accion.');
     }
   }
+
   public function results(Request $request)
   {
       $resources  = new Collection;
@@ -77,4 +79,5 @@ class UsersController extends Controller
       }
       return view('users.results', compact('resources', 'start_date', 'end_date'));
   }
+
 }

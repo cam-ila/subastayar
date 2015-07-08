@@ -14,6 +14,7 @@
 Carbon\Carbon::setLocale('es');
 
 Route::model('users', 'App\Models\User');
+Route::model('user', 'App\Models\User');
 Route::model('sale', 'App\Models\Sale');
 Route::model('categories', 'App\Models\Category');
 Route::model('bids', 'App\Models\Bid');
@@ -46,6 +47,9 @@ Route::resource('user.bids', 'UserBidsController');
 Route::get('/sales/statistics', ['uses' => 'SalesController@statistics', 'as' => 'sales.statistics']);
 Route::post('/sales/results', ['uses' => 'SalesController@results', 'as' => 'sales.results']);
 
+Route::get('/users/restore', ['uses' => 'HomeController@getRestore', 'as' => 'users.get_restore']);
+Route::post('/users/restore', ['uses' => 'HomeController@postRestore', 'as' => 'users.post_restore']);
+
 Route::get('/users/statistics', ['uses' => 'UsersController@statistics', 'as' => 'users.statistics']);
 Route::post('/users/results', ['uses' => 'UsersController@results', 'as' => 'users.results']);
 
@@ -54,8 +58,6 @@ Route::resource('users', 'UsersController');
 Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);
 Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'users.setAdmin']);
 
-Route::get('/users/restore', ['uses' => 'HomeController@getRestore', 'as' => 'users.get_restore']);
-Route::post('/users/restore', ['uses' => 'HomeController@postRestore', 'as' => 'users.post_restore']);
 
 Route::get('/contacto', ['uses' => 'HomeController@contact', 'as' => 'home.contact']);
 Route::post('/thanks', ['uses' => 'HomeController@thanks', 'as' => 'home.thanks']);

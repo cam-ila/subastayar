@@ -14,7 +14,7 @@ class UserBidsController extends Controller {
     $this->middleware('auth');
   }
 
-  public function index(Request $request, User $user)
+  public function index(User $user, Request $request)
   {
     $query     = $request->input('query');
     $model     = 'bid';

@@ -12,6 +12,11 @@
   @if($resources->count() > 0)
     @foreach($resources as $sale)
       {!! link_to(route('bids.show', $sale->bid_id), $sale) !!} <br>
+      <!-- nombre -->
+      <!-- fecha de venta -->
+      <!-- duenio -->
+      <!-- ganador -->
+      <!-- ganancia => prize * .30 -->
     @endforeach
   @else
   <div class="alert alert-warning">

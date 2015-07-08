@@ -2,8 +2,6 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-    <br>
-    
     <div class="col-md-8 col-md-offset-2">
       {!! Form::open(['url' => route('home.thanks')]) !!}
       <div class="row">
