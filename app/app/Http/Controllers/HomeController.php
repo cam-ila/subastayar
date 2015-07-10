@@ -25,7 +25,7 @@ class HomeController extends Controller {
     $query     = $request->input('query');
     $model     = 'bid';
     $resources = Bid::active()->whereCategoryId($category->id)->get();
-    return view('home.index', compact('resources', 'query', 'model', 'category_id'));
+    return view('home.index', compact('resources', 'query', 'model', 'category'));
   }
 
   public function getRestore()
