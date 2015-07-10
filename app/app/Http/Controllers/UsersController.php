@@ -55,10 +55,10 @@ class UsersController extends Controller
     if ($user->activeBids()->count() > 1) {
       return redirect()->back()->withError(trans('users.active_bids'));
     }
-    if ($user->unpayedOffers() > 1) {
+    if ($user->unpayedOffers()->count() > 1) {
       return redirect()->back()->withError(trans('users.unpayed_offers'));
     }
-    if ($user->activeOffers() > 1) {
+    if ($user->activeOffers()->count() > 1) {
       return redirect()->back()->withError(trans('users.active_offers'));
     }
 

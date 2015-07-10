@@ -77,4 +77,9 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
       )->lists('offer_id')->toArray()
     );
   }
+
+  public function activeOffers()
+  {
+    return $this->offers()->whereIn('bid_id', Bid::active()->lists('id'));
+  }
 }
