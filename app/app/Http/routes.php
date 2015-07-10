@@ -53,11 +53,10 @@ Route::post('/users/restore', ['uses' => 'HomeController@postRestore', 'as' => '
 Route::get('/users/statistics', ['uses' => 'UsersController@statistics', 'as' => 'users.statistics']);
 Route::post('/users/results', ['uses' => 'UsersController@results', 'as' => 'users.results']);
 
-Route::resource('users', 'UsersController');
-
 Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);
 Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'users.setAdmin']);
 
+Route::resource('users', 'UsersController');
 
 Route::get('/contacto', ['uses' => 'HomeController@contact', 'as' => 'home.contact']);
 Route::post('/thanks', ['uses' => 'HomeController@thanks', 'as' => 'home.thanks']);
