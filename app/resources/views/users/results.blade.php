@@ -11,8 +11,8 @@
   <div class="col-md-8">
   @if($resources->count() >0)
     @foreach($resources as $user)
-      {!! link_to(route('users.show', $user), $user) !!} <br>
-      {{ $user->created_at->toFormattedDateString() }}
+      {!! link_to(route('users.show', $user), $user) !!}
+      {{ $user->created_at->toFormattedDateString() }} </br>
     @endforeach
   @else
   <div class="alert alert-warning">
