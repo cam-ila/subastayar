@@ -14,27 +14,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
   use Authenticatable, CanResetPassword, SoftDeletes;
 
   protected $main_attr = 'name';
-  /**
-   * The database table used by the model.
-   *
-   * @var string
-   */
   protected $table = 'users';
-
-  /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
   protected $fillable = ['name', 'email', 'password'];
-
-  /**
-   * The attributes excluded from the model's JSON form.
-   *
-   * @var array
-   */
   protected $hidden = ['password', 'remember_token'];
-  protected $dats   = ['deleted_at'];
+  protected $dates   = ['deleted_at'];
 
   public function bids()
   {
@@ -79,5 +62,19 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
   public function asString()
   {
     return $this->fullName();
+  }
+
+  public function activeBids()
+  {
+    return $this->bids()->where(['active' => true]);
+  }
+
+  public function unpayedOffers()
+  {
+    return $this->offers()->whereIn(
+      'id', Sale::unpayed()->whereIn(
+        'bid_id', $this->bids()->lists('id')->toArray()
+      )->lists('offer_id')->toArray()
+    );
   }
 }

@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration {
       $table->increments('id');
       $table->integer('offer_id')->unsigned()->index();
       $table->integer('bid_id')->unsigned()->index();
+      $table->boolean('payed')->default(false);
       $table->timestamps();
 
       // Constraints

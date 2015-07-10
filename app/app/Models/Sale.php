@@ -34,4 +34,9 @@ class Sale extends Base {
     return trans('models.sales.sold_by', compact('seller', 'product'));
   }
 
+  public function scopeUnpayed($query)
+  {
+    return $query->where('payed', '=', false);
+  }
+
 }

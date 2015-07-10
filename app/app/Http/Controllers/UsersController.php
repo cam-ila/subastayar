@@ -52,7 +52,16 @@ class UsersController extends Controller
 
   public function destroy(User $user)
   {
-    //TODO: deshabilitar las subatas del man
+    if ($user->activeBids()->count() > 1) {
+      return redirect()->back()->withError(trans('users.active_bids'));
+    }
+    if ($user->unpayedOffers() > 1) {
+      return redirect()->back()->withError(trans('users.unpayed_offers'));
+    }
+    if ($user->activeOffers() > 1) {
+      return redirect()->back()->withError(trans('users.active_offers'));
+    }
+
     $user->delete();
     Auth::logout();
     return redirect(route('home'))->withMessage('Se ha dado de baja su cuenta.');

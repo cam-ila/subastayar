@@ -38,7 +38,6 @@ Route::resource('offers', 'OffersController');
 Route::post('/sales/store', ['uses' => 'SalesController@store', 'as' => 'sales.store']);
 Route::get('/sales/{sale}/pay', ['uses' => 'SalesController@pay', 'as' => 'sales.pay']);
 Route::post('/sales/{sale}/pay', ['uses' => 'SalesController@registerPay', 'as' => 'sales.register_pay']);
-Route::get('/sales/betweenDates', ['uses' => 'SalesController@betweenDates', 'as' => 'sales.between_dates']);
 
 Route::resource('user.offers', 'UserOffersController');
 Route::resource('user.notifications', 'UserNotificationsController');

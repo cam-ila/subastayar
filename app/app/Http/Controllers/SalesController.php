@@ -11,16 +11,6 @@ use Illuminate\Support\Collection;
 
 class SalesController extends Controller {
 
-  public function index()
-  {
-    //
-  }
-
-  public function create()
-  {
-    //
-  }
-
   public function store(Request $request)
   {
     $sale = new Sale($request->all());
@@ -40,6 +30,8 @@ class SalesController extends Controller {
 
   public function registerPay(Request $request, Sale $sale)
   {
+    $sale->payed = true;
+    $sale->save();
     return redirect(route('home'))->withMessage('Se ha registrado su pago.');
   }
 
