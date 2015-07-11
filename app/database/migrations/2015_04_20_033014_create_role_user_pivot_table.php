@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateRoleUserPivotTable extends Migration {
 
-  /**
-   * Run the migrations.
-   *
-   * @return void
-   */
   public function up()
   {
     Schema::create('role_user', function(Blueprint $table)
@@ -21,11 +16,6 @@ class CreateRoleUserPivotTable extends Migration {
     });
   }
 
-  /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
   public function down()
   {
     Schema::drop('role_user');

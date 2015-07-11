@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateBidsTable extends Migration {
 
-  /**
-   * Run the migrations.
-   *
-   * @return void
-   */
   public function up()
   {
     Schema::create('bids', function(Blueprint $table)
@@ -31,11 +26,6 @@ class CreateBidsTable extends Migration {
     });
   }
 
-  /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
   public function down()
   {
     Schema::drop('bids');
