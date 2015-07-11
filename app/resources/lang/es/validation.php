@@ -102,6 +102,10 @@ return [
     'bid'         => 'subasta',
     'prize'       => 'precio',
     'message'     => 'mensaje',
+    'sold_at'     => 'fecha de venta',
+    'owner'       => 'dueño',
+    'winner'      => 'comprador',
+    'earning'     => 'ganancia',
   ]
 
 ];

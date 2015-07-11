@@ -11,12 +11,19 @@
   <div class="col-md-8">
   @if($resources->count() > 0)
     @foreach($resources as $sale)
-      {!! link_to(route('bids.show', $sale->bid_id), $sale) !!} <br>
-      <!-- nombre -->
-      <!-- fecha de venta -->
-      <!-- duenio -->
-      <!-- ganador -->
-      <!-- ganancia => prize * .30 -->
+    <div class="jumbotron">
+      <h4>{!! link_to(route('bids.show', $sale->bid_id), $sale->bid->title) !!}</h4>
+      <dl>
+        <dt>{{ trans('validation.attributes.sold_at') }}</dt>
+        <dd>{{ $sale->created_at->toFormattedDateString() }}</dd>
+        <dt>{{ trans('validation.attributes.owner') }}</dt>
+        <dd>{{ $sale->seller() }}</dd>
+        <dt>{{ trans('validation.attributes.winner') }}</dt>
+        <dd>{{ $sale->buyer() }}</dd>
+        <dt>{{ trans('validation.attributes.earning') }}</dt>
+        <dd>{{ $sale->offer->prize * .30 }}</dd>
+      </dl>
+    </div>
     @endforeach
   @else
   <div class="alert alert-warning">

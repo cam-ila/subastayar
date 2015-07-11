@@ -14,7 +14,7 @@
 
 <div class="form-group">
   <label for="prize">Valor a ofertar</label>
-  {!! Form::input('number', 'prize', $resource->prize, ['class' => 'form-control', 'id' => 'prize']) !!}
+  {!! Form::input('number', 'prize', $resource->prize, ['class' => 'form-control', 'id' => 'prize', 'required' => true, 'min' => 1]) !!}
 </div>
 
 <div class="actions pull-right">

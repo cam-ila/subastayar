@@ -25,6 +25,7 @@ class OfferRequest extends Request {
       'bid_id'  => 'required',
       'user_id' => 'required',
       'body'    => 'required',
+      'prize'   => 'required|min:1'
     ];
   }
 
