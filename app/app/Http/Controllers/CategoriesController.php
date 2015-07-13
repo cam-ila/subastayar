@@ -56,6 +56,7 @@ class CategoriesController extends Controller {
   public function update(Category $category, CategoryRequest $request)
   {
     if ($category->update($request->all())) {
+      $category->save();
       return redirect(route('categories.show', $category))->withMessage('Se ha actualizado la categoria ' . $category->name);
     } else {
       return redirect(route('categories.show', $category))->withError('No se pudo actualizar la categoria.');

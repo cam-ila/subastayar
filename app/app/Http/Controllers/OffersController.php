@@ -57,6 +57,7 @@ class OffersController extends Controller {
   public function update(Offer $offer, OfferRequest $request)
   {
     $offer->update($request->all());
+    $offer->save();
     return redirect(route('offers.show', $offer));
   }
 }
