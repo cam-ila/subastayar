@@ -25,6 +25,10 @@
       </dl>
     </div>
     @endforeach
+    <div class="total">
+      Ganancias Totales:
+      {{ $resources->reduce(function($carry, $sale){ return $carry + $sale->offer->prize; }, 0) * .3 }}
+    </div>
   @else
   <div class="alert alert-warning">
     {{ trans('messages.no_records') }}
