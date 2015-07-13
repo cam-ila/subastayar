@@ -19,5 +19,6 @@ return [
   'user_not_found'   => 'No se ha encontrado un usuario con ese email.',
   'login_email_sent' => 'Se le ha enviado un email los datos necesarios para recuperar su cuenta.',
   'message'          => 'Mensaje',
+  'edit'             => 'Editar mi cuenta',
 
 ];
