@@ -89,4 +89,14 @@ class UsersController extends Controller
       return view('users.results', compact('resources', 'start_date', 'end_date'));
   }
 
+  public function update(User $user, Request $request)
+  {
+   if ($user->update($request->all())) {
+    $user->save(); 
+    return redirect(route('users.show', $user))-> withMessage('Se ha editado exitosamente su perfil');
+  } else {
+    return redirect(route('users.show', $user))-> withError('No se pudo editar su perfil');
+  }
+    
+   }
 }

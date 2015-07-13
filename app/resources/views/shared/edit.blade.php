@@ -7,7 +7,7 @@
   @endsection
 
   @include('shared.partials.panel', [
-    'title'  => trans('crud.titles.create', ['model' => translate($resource->model())]),
+    'title'  => trans('crud.titles.edit', ['model' => translate($resource->model())]),
     'search' => false])
 
 @endsection
