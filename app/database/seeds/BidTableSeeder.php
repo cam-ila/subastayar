@@ -27,13 +27,16 @@ class BidTableSeeder extends Seeder {
         'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::now()->addDays(3),
       ]),
-      new Bid([
-        'title'       => 'Espejo',
-        'description' => 'Espejo sin marco. Medidas: 0.8m x 1.2m',
+        new Bid([
+        'title'       => 'Celular ',
+        'description' => 'Celular que lo tenia guardado desde hace varios años, anda',
         'category_id' => $antig->id,
-        'image'       => 'espejo.jpg',
-        'expires_at'  => Carbon::tomorrow(),
+        'image'       => 'sinimagen.jpg',
+        'created_at'  => Carbon::now()->subDays(40),
+        'expires_at'  => Carbon::now()->subDays(10),
+        'active' => false,
       ])
+     
     ]);
 
     User::whereEmail('ramirolamas@ramiro.com')->firstOrFail()->bids()->saveMany([
@@ -46,6 +49,14 @@ class BidTableSeeder extends Seeder {
         'expires_at'  => Carbon::yesterday(),
         'active'      => false,
       ]),
+       new Bid([
+        'title'       => 'Espejo',
+        'description' => 'Espejo sin marco. Medidas: 0.8m x 1.2m',
+        'category_id' => $antig->id,
+        'image'       => 'espejo.jpg',
+        'created_at'  => Carbon::now()->subDays(15),
+        'expires_at'  => Carbon::tomorrow(),
+      ])
     ]);
 
     User::whereEmail('catalinaperez@catalina.com')->firstOrFail()->bids()->saveMany([
@@ -54,10 +65,18 @@ class BidTableSeeder extends Seeder {
         'description' => '200 gramos de Kriptonita',
         'category_id' => $otros->id,
         'image'       => 'kriptonita.jpg',
-        'created_at'  => Carbon::now()->subDays(2),
+        'created_at'  => Carbon::now()->subDays(14),
         'expires_at'  => Carbon::yesterday(),
         'active'      => false,
-      ])
+      ]),
+      new Bid([
+        'title'       => 'Silla',
+        'description' => 'Silla de computadora estandar, esta como nueva.',
+        'category_id' => $otros->id,
+        'image'       => 'silla.jpg',
+        'created_at'  => Carbon::now()->subDays(14),
+        'expires_at'  => Carbon::tomorrow(),
+       ])
     ]);
 
     User::whereEmail('sergioramirez@sergioramirez.com')->firstOrFail()->bids()->saveMany([
@@ -69,8 +88,40 @@ class BidTableSeeder extends Seeder {
         'created_at'  => Carbon::now()->subDays(2),
         'expires_at'  => Carbon::yesterday(),
         'active'      => false,
+      ]),
+        new Bid([
+        'title'       => 'Vino',
+        'description' => 'un vino super antiguo que tenia tirado en el fonod',
+        'category_id' => $alimentos->id,
+        'image'       => 'sinimagen.jpg',
+        'created_at'  => Carbon::now()->subDays(12),
+        'expires_at'  => Carbon::yesterday(),
+        'active'      => false,
       ])
-    ]);
+        ]);
+
+    User::whereEmail('mabelrimano@mabel.com')->firstOrFail()->bids()->saveMany([
+      new Bid([
+         'title'       => 'cajon',
+        'description' => 'hermoso cajon de verduras',
+        'category_id' => $otros->id,
+        'image'       => 'sinimagen.jpg',
+        'created_at'  => Carbon::now()->subDays(20),
+        'expires_at'  => Carbon::now()->subDays(5),
+        'active'      => false,
+        ]),
+      new Bid([
+         'title'       => 'caja',
+        'description' => 'caja de carton cuadrada de 50cm x 50 cm',
+        'category_id' => $otros->id,
+        'image'       => 'sinimagen.jpg',
+        'created_at'  => Carbon::now()->subDays(20),
+        'expires_at'  => Carbon::now()->subDays(1),
+        'active'      => false,
+        ])
+      ]);
+
+    
   }
 
 }

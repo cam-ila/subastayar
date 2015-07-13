@@ -42,7 +42,7 @@ class CommentTableSeeder extends Seeder {
       new Comment([
         'body'     => 'hola, sabes cuantos años tiene?',
         'user_id'  => $sergio->id,
-        'response' => null
+        'response' => 'no, esperemos que le queden varios años por vivir'
       ])
     ]);
 
