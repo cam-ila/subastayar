@@ -55,6 +55,10 @@ Route::post('/users/results', ['uses' => 'UsersController@results', 'as' => 'use
 Route::get('/users/admin', ['uses' => 'UsersController@admin', 'as' => 'users.admin']);
 Route::post('/users/admin', ['uses' => 'UsersController@setAdmin', 'as' => 'users.setAdmin']);
 
+Route::get('/users/{user}/edit_pass', ['uses' => 'UsersController@updatePass', 'as' => 'users.edit.update_pass']);
+Route::post('/users/{user}/edit_pass', ['uses' => 'UsersController@setPass', 'as' => 'users.edit.set_pass']);
+
+
 Route::resource('users', 'UsersController');
 
 Route::get('/contacto', ['uses' => 'HomeController@contact', 'as' => 'home.contact']);

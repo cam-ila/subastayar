@@ -22,6 +22,7 @@
     {!! Form::open(['url' => route('users.destroy', Auth::user()->id), 'class' => 'destroy-link', 'method' => 'DELETE' ]) !!}
     {!! Button::danger(trans('crud.users.soft_delete'))->withAttributes(['class' => 'btn-form-submit']) !!}
     {!! Form::close() !!}
+    {!! link_to(route('users.edit.update_pass', $user->id), 'Cambiar contraseña', ['class' => 'btn btn-primary']) !!}
   @endsection
   @endif
 

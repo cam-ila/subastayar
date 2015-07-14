@@ -99,4 +99,18 @@ class UsersController extends Controller
   }
     
    }
+
+ public function updatePass(User $user)
+  {
+    return view('users.pass', compact('user'));
+  }
+
+public function setPass(User $user, Request $request)
+  {
+
+    
+
+    return $request;
+  }
+
 }
