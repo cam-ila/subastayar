@@ -15,14 +15,14 @@
 
   <label class="col-md-4 control-label"> Contraseña nueva: </label>
   <div class="col-md-6">
-    {!! Form::password('new_pass', ['class' => 'form-control', 'autofocus' => true, 'placeholder' => 'contraseña nueva', 'required' => true]) !!}
+    {!! Form::password('password', ['class' => 'form-control', 'autofocus' => true, 'placeholder' => 'contraseña nueva', 'required' => true]) !!}
   </div>
 
   <label class="col-md-4 control-label"> Confirmar contraseña: </label>
   <div class="col-md-6">
-    {!! Form::password('pass_confirm', ['class' => 'form-control', 'autofocus' => true, 'placeholder' => 'confirmar', 'required' => true]) !!}
+    {!! Form::password('password_confirmation', ['class' => 'form-control', 'autofocus' => true, 'placeholder' => 'confirmar', 'required' => true]) !!}
   </div>
-  
+
   <div class="row form-group">
   <div class="col-md-6 col-md-offset-4">
     <button type="submit" class="btn btn-primary">

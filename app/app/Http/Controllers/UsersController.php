@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\User as User;
 use Carbon\Carbon as Carbon;
 use App\Http\Requests;
+use App\Http\Requests\PassRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Auth\PasswordController as PasswordController;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -78,39 +80,42 @@ class UsersController extends Controller
 
   public function results(Request $request)
   {
-      $resources  = new Collection;
-      $start_date = $request->get('start_date');
-      $end_date   = $request->get('end_date');
-      if ($start_date && $end_date) {
-        $from = Carbon::createFromFormat('Y-m-d', $start_date);
-        $upto   = Carbon::createFromFormat('Y-m-d', $end_date);
-        $resources  = User::whereBetween('created_at', [$from, $upto])->get() ;
-      }
-      return view('users.results', compact('resources', 'start_date', 'end_date'));
+    $resources  = new Collection;
+    $start_date = $request->get('start_date');
+    $end_date   = $request->get('end_date');
+    if ($start_date && $end_date) {
+      $from = Carbon::createFromFormat('Y-m-d', $start_date);
+      $upto   = Carbon::createFromFormat('Y-m-d', $end_date);
+      $resources  = User::whereBetween('created_at', [$from, $upto])->get() ;
+    }
+    return view('users.results', compact('resources', 'start_date', 'end_date'));
   }
 
   public function update(User $user, Request $request)
   {
-   if ($user->update($request->all())) {
-    $user->save(); 
-    return redirect(route('users.show', $user))-> withMessage('Se ha editado exitosamente su perfil');
-  } else {
-    return redirect(route('users.show', $user))-> withError('No se pudo editar su perfil');
+    if ($user->update($request->all())) {
+      $user->save();
+      return redirect(route('users.show', $user))-> withMessage('Se ha editado exitosamente su perfil');
+    } else {
+      return redirect(route('users.show', $user))-> withError('No se pudo editar su perfil');
+    }
   }
-    
-   }
 
- public function updatePass(User $user)
+  public function updatePass(User $user)
   {
     return view('users.pass', compact('user'));
   }
 
-public function setPass(User $user, Request $request)
+  public function setPass(User $user, PassRequest $request)
   {
-
-    
-
-    return $request;
+    if (Hash::check($request->get('old_pass'), $user->password)) {
+      $user->password = Hash::make($request->get('password'));
+      $user->save();
+      Auth::logout();
+      return redirect(route('home'))->withMessage('Contraseña guardada correctamente. Vuelva a iniciar sesion para confirmarla por favor.');
+    } else {
+      return redirect()->back()->withError('Contraseña incorrecta.');
+    }
   }
 
 }
